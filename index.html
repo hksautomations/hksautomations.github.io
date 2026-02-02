@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HKS Automations - Production-Grade AI Automation Systems</title>
+    <meta name="description" content="I build production-grade AI automation systems with n8n + LLMs that handle lead generation, customer support, and repetitive workflows automatically.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #16161f;
+            --accent-cyan: #00fff5;
+            --accent-magenta: #ff00ff;
+            --accent-yellow: #ffff00;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Grid Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 245, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 245, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.8);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-magenta), var(--accent-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            animation: gradientShift 6s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--accent-cyan);
+            color: var(--bg-dark);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            border-radius: 0;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--accent-cyan);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 80px 0;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-magenta));
+            transform: scaleX(0);
+            transition: transform 0.5s;
+        }
+
+        .stat-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stat-number {
+            font-family: 'Syne', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 40px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(180deg, transparent, rgba(0, 255, 245, 0.1));
+            transition: height 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+        }
+
+        .project-card:hover::after {
+            height: 100%;
+        }
+
+        .project-number {
+            font-family: 'Syne', sans-serif;
+            font-size: 14px;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .project-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tag {
+            font-size: 11px;
+            padding: 5px 12px;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-link::after {
+            content: '→';
+            margin-left: 5px;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .project-link:hover::after {
+            transform: translateX(5px);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 255, 245, 0.05), rgba(255, 0, 255, 0.05));
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cta-section h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 40px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-section a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            border-color: var(--accent-cyan);
+            background: var(--accent-cyan);
+            color: var(--bg-dark);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">HKS AUTOMATIONS</div>
+                <nav>
+                    <a href="#projects">Projects</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>
+                Production-Grade<br>
+                <span class="gradient-text">AI Automation</span><br>
+                Systems
+            </h1>
+            <p>
+                I build reliable AI automation systems with n8n + LLMs that handle lead generation, 
+                customer support, and repetitive workflows — not demos, real production systems with safeguards.
+            </p>
+            <a href="#contact" class="cta-button">Let's Talk</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">8+</div>
+                <div class="stat-label">Production Systems</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Production-Ready</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Automated Workflows</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Automation Systems</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-number">PROJECT 01</div>
+                    <h3 class="project-title">AI Lead Generation & Outreach</h3>
+                    <p class="project-description">
+                        End-to-end automation that finds leads, qualifies them using AI + rule-based logic, 
+                        and generates personalized outreach at scale. Includes scoring, filtering, and CRM integration.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">n8n</span>
+                        <span class="tag">LLM</span>
+                        <span class="tag">Lead Gen</span>
+                        <span class="tag">Gmail</span>
+                    </div>
+                    <a href="projects/lead-generation.html" class="project-link">View Details</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-number">PROJECT 02</div>
+                    <h3 class="project-title">AI Customer Support (RAG)</h3>
+                    <p class="project-description">
+                        RAG-based customer support system that answers questions from your knowledge base automatically. 
+                        Includes Flowise integration, n8n orchestration, and confidence-based human handoff.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">RAG</span>
+                        <span class="tag">Flowise</span>
+                        <span class="tag">n8n</span>
+                        <span class="tag">Support</span>
+                    </div>
+                    <a href="projects/customer-support.html" class="project-link">View Details</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-number">PROJECT 03</div>
+                    <h3 class="project-title">JD-Resume Gap Analysis</h3>
+                    <p class="project-description">
+                        Automatically analyzes job descriptions, researches role requirements, compares against resumes, 
+                        and provides skill gap reports with alignment suggestions.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">AI Analysis</span>
+                        <span class="tag">Recruitment</span>
+                        <span class="tag">LLM</span>
+                    </div>
+                    <a href="projects/jd-resume.html" class="project-link">View Details</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-number">PROJECT 04</div>
+                    <h3 class="project-title">AI Market Research System</h3>
+                    <p class="project-description">
+                        Automated market research pipeline that gathers data, analyzes trends, and generates 
+                        comprehensive reports using AI-powered research and synthesis.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Research</span>
+                        <span class="tag">Analysis</span>
+                        <span class="tag">Reports</span>
+                    </div>
+                    <a href="projects/market-research.html" class="project-link">View Details</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-number">PROJECT 05</div>
+                    <h3 class="project-title">Gmail AI Organizer</h3>
+                    <p class="project-description">
+                        Intelligent email classification system that automatically categorizes, prioritizes, 
+                        and organizes emails using AI, reducing inbox management time by 80%.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Gmail API</span>
+                        <span class="tag">Classification</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                    <a href="projects/gmail-organizer.html" class="project-link">View Details</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-number">PROJECT 06</div>
+                    <h3 class="project-title">AI Appointment & Follow-Up</h3>
+                    <p class="project-description">
+                        Complete appointment scheduling and follow-up automation including WhatsApp integration, 
+                        reminder systems, and intelligent rescheduling logic.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Scheduling</span>
+                        <span class="tag">WhatsApp</span>
+                        <span class="tag">CRM</span>
+                    </div>
+                    <a href="projects/appointments.html" class="project-link">View Details</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-number">PROJECT 07</div>
+                    <h3 class="project-title">Client Onboarding System</h3>
+                    <p class="project-description">
+                        End-to-end client onboarding automation: welcome emails, agreement generation, 
+                        invoicing, environment setup, and automated reporting.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Onboarding</span>
+                        <span class="tag">Automation</span>
+                        <span class="tag">Internal</span>
+                    </div>
+                    <a href="projects/onboarding.html" class="project-link">View Details</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-number">PROJECT 08</div>
+                    <h3 class="project-title">Cold Outreach Generator</h3>
+                    <p class="project-description">
+                        Advanced cold outreach system with AI-powered discovery, personalized hook generation, 
+                        and intelligent message crafting for maximum response rates.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Outreach</span>
+                        <span class="tag">AI Copy</span>
+                        <span class="tag">Sales</span>
+                    </div>
+                    <a href="projects/cold-outreach.html" class="project-link">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Ready to Automate Your Workflows?</h2>
+            <p>
+                If you have manual, repetitive, or decision-heavy processes, let's discuss how 
+                AI automation can help. I build reliable systems with safeguards, not experiments.
+            </p>
+            <a href="/cdn-cgi/l/email-protection#543c3526223d273c273c353c143c3f273521203b3935203d3b3a277a373b39" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <footer id="about">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>HKS Automations</h3>
+                    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.8;">
+                        I design and build production-grade AI automation systems that replace manual workflows 
+                        while preserving control, safety, and explainability.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://github.com/hksautomations" target="_blank">GH</a>
+                        <a href="https://www.linkedin.com/in/hks-automations" target="_blank">LI</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <a href="#projects">AI Automation Systems</a>
+                    <a href="#projects">RAG-Based Assistants</a>
+                    <a href="#projects">Lead Generation</a>
+                    <a href="#projects">Workflow Orchestration</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Technologies</h3>
+                    <a href="#projects">n8n Workflows</a>
+                    <a href="#projects">Large Language Models</a>
+                    <a href="#projects">Flowise Integration</a>
+                    <a href="#projects">API Integrations</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <a href="/cdn-cgi/l/email-protection#4820293a3e213b203b2029200820233b293d3c2725293c2127263b662b2725"><span class="__cf_email__" data-cfemail="d4bcb5a6a2bda7bca7bcb5bc94bcbfa7b5a1a0bbb9b5a0bdbbbaa7fab7bbb9">[email&#160;protected]</span></a>
+                    <a href="https://github.com/hksautomations">GitHub Portfolio</a>
+                    <a href="https://www.linkedin.com/in/hks-automations">LinkedIn Profile</a>
+                <
