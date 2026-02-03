@@ -63,7 +63,7 @@ git push -u origin main
 
 ### Update Contact Info
 Edit `index.html` and all project pages:
-- Email: `harvishshah@hksautomations.com`
+- Email: `hks.automations@gmail.com`
 - LinkedIn: Update links to your actual profile
 - GitHub: Update links to your repositories
 
@@ -85,7 +85,7 @@ Modify CSS variables in `<style>` section:
 
 ## 📧 Contact
 Harvish Shah  
-Email: harvishshah@hksautomations.com  
+Email: hks.automations@gmail.com  
 GitHub: https://github.com/hksautomations  
 LinkedIn: https://www.linkedin.com/in/hks-automations
 
