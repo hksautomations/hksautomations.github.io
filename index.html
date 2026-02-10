@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HKS Automations - Production-Grade AI Automation Systems</title>
+    <meta name="description" content="We build production-grade AI automation systems that streamline operations, boost productivity, and drive growth. Specializing in n8n, LLMs, and workflow automation.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #2563eb;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-gray: #64748b;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #ffffff;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 16px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            letter-spacing: -0.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        nav a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        .cta-header {
+            padding: 10px 24px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--text-dark);
+            letter-spacing: -1.5px;
+        }
+
+        .hero .highlight {
+            color: var(--primary-blue);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 16px 32px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            padding: 16px 32px;
+            background: transparent;
+            color: var(--text-dark);
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin: 80px 0;
+            padding: 60px 0;
+            background: var(--light-bg);
+            border-radius: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        /* Section Heading */
+        .section-heading {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            font-size: 14px;
+            color: var(--primary-blue);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        section {
+            padding: 80px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), #60a5fa);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-blue);
+        }
+
+        .service-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .service-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .service-description {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .tag {
+            font-size: 11px;
+            padding: 6px 12px;
+            background: #eff6ff;
+            color: var(--primary-blue);
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .service-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .service-link:hover {
+            gap: 10px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1e293b 100%);
+            padding: 100px 0;
+            text-align: center;
+            border-radius: 24px;
+            margin: 80px 0;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--light-bg);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: white;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-gray);
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .footer-section a {
+            display: block;
+            color: var(--text-gray);
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-blue);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">HKS Automations</div>
+                <nav>
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <a href="#contact" class="cta-header">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>
+                AI solutions built for<br>
+                <span class="highlight">real-world operations</span>
+            </h1>
+            <p>
+                Most AI projects fail because they're built for demos, not users. 
+                We focus on clarity, usefulness, and business value.
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn-primary">Get in touch</a>
+                <a href="#services" class="btn-secondary">View services</a>
+            </div>
+
+            <div class="container">
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label">Production Systems</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Production-Ready</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Automated Workflows</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="section-heading">
+                <div class="section-tag">SERVICES</div>
+                <h2 class="section-title">Smarter Services, Built with AI</h2>
+                <p class="section-subtitle">
+                    Everything you need to automate operations, boost productivity, and scale your business
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3 class="service-title">AI Lead Generation & Outreach</h3>
+                    <p class="service-description">
+                        End-to-end automation that finds leads, qualifies them using AI, and generates 
+                        personalized outreach at scale with intelligent scoring.
+                    </p>
+                    <div class="service-tags">
+                        <span class="tag">n8n</span>
+                        <span class="tag">LLM</span>
+                        <span class="tag">Gmail API</span>
+                        <span class="tag">Lead Gen</span>
+                    </div>
+                    <a href="projects/lead-generation.html" class="service-link">
+                        Learn more →
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💬</div>
+                    <h3 class="service-title">AI Customer Support (RAG)</h3>
+                    <p class="service-description">
+                        RAG-based support system that answers questions from your knowledge base automatically 
+                        with 90%+ accuracy and intelligent handoff.
+                    </p>
+                    <div class="service-tags">
+                        <span class="tag">RAG</span>
+                        <span class="tag">Flowise</span>
+                        <span class="tag">n8n</span>
+                        <span class="tag">Support</span>
+                    </div>
+                    <a href="projects/customer-support.html" class="service-link">
+                        Learn more →
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📄</div>
+                    <h3 class="service-title">Resume-JD Gap Analysis</h3>
+                    <p class="service-description">
+                        Automatically analyzes job descriptions, researches requirements, and provides 
+                        skill gap reports with alignment suggestions.
+                    </p>
+                    <div class="service-tags">
+                        <span class="tag">AI Analysis</span>
+                        <span class="tag">Recruitment</span>
+                        <span class="tag">LLM</span>
+                    </div>
+                    <a href="projects/resume-analysis.html" class="service-link">
+                        Learn more →
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3 class="service-title">Market Research Automation</h3>
+                    <p class="service-description">
+                        Automated research pipeline that gathers data, analyzes trends, and generates 
+                        comprehensive reports using AI-powered synthesis.
+                    </p>
+                    <div class="service-tags">
+                        <span class="tag">Research</span>
+                        <span class="tag">Analysis</span>
+                        <span class="tag">Reports</span>
+                    </div>
+                    <a href="projects/market-research.html" class="service-link">
+                        Learn more →
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📧</div>
+                    <h3 class="service-title">Gmail AI Organizer</h3>
+                    <p class="service-description">
+                        Intelligent email classification that automatically categorizes and prioritizes emails, 
+                        reducing inbox management time by 80%.
+                    </p>
+                    <div class="service-tags">
+                        <span class="tag">Gmail API</span>
+                        <span class="tag">Classification</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                    <a href="projects/gmail-organizer.html" class="service-link">
+                        Learn more →
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📅</div>
+                    <h3 class="service-title">Appointment & Follow-Up System</h3>
+                    <p class="service-description">
+                        Complete scheduling automation with WhatsApp integration, reminder systems, 
+                        and intelligent rescheduling logic.
+                    </p>
+                    <div class="service-tags">
+                        <span class="tag">Scheduling</span>
+                        <span class="tag">WhatsApp</span>
+                        <span class="tag">CRM</span>
+                    </div>
+                    <a href="projects/appointments.html" class="service-link">
+                        Learn more →
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3 class="service-title">Client Onboarding Automation</h3>
+                    <p class="service-description">
+                        End-to-end onboarding: welcome emails, agreements, invoicing, environment setup, 
+                        and automated reporting all in one system.
+                    </p>
+                    <div class="service-tags">
+                        <span class="tag">Onboarding</span>
+                        <span class="tag">Automation</span>
+                        <span class="tag">Workflows</span>
+                    </div>
+                    <a href="projects/onboarding.html" class="service-link">
+                        Learn more →
+                    </a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">✉️</div>
+                    <h3 class="service-title">Cold Outreach Generator</h3>
+                    <p class="service-description">
+                        Advanced system with AI-powered discovery, personalized hook generation, and 
+                        intelligent message crafting for maximum response rates.
+                    </p>
+                    <div class="service-tags">
+                        <span class="tag">Outreach</span>
+                        <span class="tag">AI Copy</span>
+                        <span class="tag">Sales</span>
+                    </div>
+                    <a href="projects/cold-outreach.html" class="service-link">
+                        Learn more →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="cta-section" id="contact">
+            <h2>Ready to Automate Your Workflows?</h2>
+            <p>
+                Book a free consultation call and let's discuss how AI automation can 
+                transform your business operations.
+            </p>
+            <div style="margin-top: 32px;">
+                <p style="color: #cbd5e1; margin-bottom: 24px; font-size: 16px;">
+                    📧 <strong>Email:</strong> <a href="mailto:harvishshah@hksautomations.com" style="color: white; text-decoration: underline;">harvishshah@hksautomations.com</a>
+                </p>
+                <p style="color: #cbd5e1; margin-bottom: 32px; font-size: 16px;">
+                    📍 <strong>Location:</strong> Ahmedabad, Gujarat, India
+                </p>
+            </div>
+            <a href="mailto:harvishshah@hksautomations.com" class="btn-primary" style="background: white; color: var(--dark-bg);">
+                Get in touch
+            </a>
+        </div>
+    </div>
+
+    <footer id="about">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>HKS Automations</h3>
+                    <p>
+                        We build production-grade AI automation systems that streamline operations, 
+                        boost productivity, and drive growth. Specializing in n8n, LLMs, and workflow automation.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://github.com/hksautomations" class="social-link" target="_blank">GH</a>
+                        <a href="https://www.linkedin.com/in/hks-automations" class="social-link" target="_blank">IN</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <a href="#services">Lead Generation</a>
+                    <a href="#services">Customer Support</a>
+                    <a href="#services">Workflow Automation</a>
+                    <a href="#services">AI Integration</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Technologies</h4>
+                    <a href="#services">n8n Platform</a>
+                    <a href="#services">Large Language Models</a>
+                    <a href="#services">Flowise RAG</a>
+                    <a href="#services">API Integration</a>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#services">Our Work</a>
+                    <a href="#contact">Contact</a>
+                    <a href="https://github.com/hksautomations">GitHub</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                © 2026 HKS Automations. Built by Harvish Shah. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
