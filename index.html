@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HKS Automations — Production-Grade AI Automation</title>
+    <meta name="description" content="Production-grade AI automation systems built by an engineer with 14+ years enterprise experience at GEA & Siemens. n8n Level 2 Certified.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #1d4ed8;
+            --blue-hover: #1e40af;
+            --blue-pale: #eff6ff;
+            --blue-mid: #bfdbfe;
+            --dark: #0f172a;
+            --dark-2: #1e293b;
+            --gray: #64748b;
+            --gray-light: #94a3b8;
+            --border: #e2e8f0;
+            --bg: #ffffff;
+            --bg-2: #f8fafc;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 200;
+            background: rgba(255,255,255,0.94);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            height: 66px;
+            display: flex; align-items: center;
+            padding: 0 40px;
+            justify-content: space-between;
+        }
+        .nav-logo { font-size: 19px; font-weight: 700; color: var(--blue); text-decoration: none; }
+        .nav-links { display: flex; gap: 36px; }
+        .nav-links a { font-size: 15px; color: var(--gray); text-decoration: none; font-weight: 500; transition: color .2s; }
+        .nav-links a:hover { color: var(--dark); }
+        .nav-right { display: flex; gap: 12px; align-items: center; }
+        .nav-btn-wa {
+            display: flex; align-items: center; gap: 7px;
+            background: #25d366; color: white;
+            padding: 9px 18px; border-radius: 8px;
+            text-decoration: none; font-size: 14px; font-weight: 600;
+            transition: all .2s;
+        }
+        .nav-btn-wa:hover { background: #1da851; transform: translateY(-1px); }
+        .nav-btn-email {
+            display: flex; align-items: center; gap: 7px;
+            background: var(--blue); color: white;
+            padding: 9px 18px; border-radius: 8px;
+            text-decoration: none; font-size: 14px; font-weight: 600;
+            transition: all .2s;
+        }
+        .nav-btn-email:hover { background: var(--blue-hover); transform: translateY(-1px); }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: grid; grid-template-columns: 1fr 1fr;
+            align-items: center; gap: 64px;
+            padding: 120px 80px 80px;
+            max-width: 1400px; margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--blue-pale); border: 1px solid var(--blue-mid);
+            color: var(--blue); padding: 7px 16px; border-radius: 100px;
+            font-size: 13px; font-weight: 600; margin-bottom: 28px;
+        }
+        .badge-dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; animation: blink 2s infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(40px, 5vw, 62px);
+            line-height: 1.08; letter-spacing: -1.5px;
+            color: var(--dark); margin-bottom: 24px;
+        }
+        .hero h1 em { font-style: italic; color: var(--blue); }
+        .hero-desc {
+            font-size: 18px; color: var(--gray); line-height: 1.75;
+            margin-bottom: 40px; max-width: 520px;
+        }
+        .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+        .btn-wa {
+            display: inline-flex; align-items: center; gap: 9px;
+            background: #25d366; color: white;
+            padding: 15px 28px; border-radius: 10px;
+            text-decoration: none; font-weight: 700; font-size: 15px;
+            transition: all .25s;
+        }
+        .btn-wa:hover { background: #1da851; transform: translateY(-3px); box-shadow: 0 10px 28px rgba(37,211,102,.35); }
+        .btn-email-hero {
+            display: inline-flex; align-items: center; gap: 9px;
+            background: var(--blue); color: white;
+            padding: 15px 28px; border-radius: 10px;
+            text-decoration: none; font-weight: 700; font-size: 15px;
+            transition: all .25s; border: 2px solid var(--blue);
+        }
+        .btn-email-hero:hover { background: var(--blue-hover); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(29,78,216,.3); }
+        .btn-ghost {
+            display: inline-flex; align-items: center; gap: 9px;
+            background: transparent; color: var(--dark);
+            padding: 15px 28px; border-radius: 10px;
+            text-decoration: none; font-weight: 600; font-size: 15px;
+            border: 2px solid var(--border); transition: all .25s;
+        }
+        .btn-ghost:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-3px); }
+        .hero-trust { display: flex; gap: 28px; flex-wrap: wrap; }
+        .trust-pill {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 13px; color: var(--gray); font-weight: 500;
+        }
+        .trust-pill span { font-size: 16px; }
+
+        /* Hero card */
+        .hero-card {
+            background: var(--dark); border-radius: 24px;
+            padding: 40px; box-shadow: 0 32px 80px rgba(15,23,42,.18);
+        }
+        .hc-label { font-size: 11px; color: var(--gray-light); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; font-weight: 600; }
+        .hc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+        .hc-stat {
+            background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
+            border-radius: 14px; padding: 22px;
+        }
+        .hc-stat-num {
+            font-family: 'DM Serif Display', serif;
+            font-size: 34px; color: white; margin-bottom: 5px;
+        }
+        .hc-stat-lbl { font-size: 12px; color: var(--gray-light); font-weight: 500; }
+        .hc-cert {
+            display: flex; align-items: center; gap: 14px;
+            background: rgba(29,78,216,.18); border: 1px solid rgba(29,78,216,.35);
+            border-radius: 14px; padding: 18px 20px; margin-bottom: 16px;
+        }
+        .hc-cert-icon {
+            width: 46px; height: 46px; background: var(--blue);
+            border-radius: 12px; display: flex; align-items: center;
+            justify-content: center; font-size: 22px; flex-shrink: 0;
+        }
+        .hc-cert-title { color: white; font-weight: 700; font-size: 15px; }
+        .hc-cert-sub { color: var(--gray-light); font-size: 12px; margin-top: 3px; }
+        .hc-contact {
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .hc-contact-btn {
+            display: flex; align-items: center; gap: 10px;
+            padding: 14px 18px; border-radius: 10px;
+            text-decoration: none; font-size: 14px; font-weight: 600;
+            transition: all .2s;
+        }
+        .hc-wa { background: rgba(37,211,102,.12); color: #4ade80; border: 1px solid rgba(37,211,102,.2); }
+        .hc-wa:hover { background: rgba(37,211,102,.2); }
+        .hc-em { background: rgba(59,130,246,.12); color: #93c5fd; border: 1px solid rgba(59,130,246,.2); }
+        .hc-em:hover { background: rgba(59,130,246,.2); }
+
+        /* ─── CONTAINER ─── */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+        /* ─── STATS BAR ─── */
+        .stats-bar {
+            background: var(--dark); padding: 48px 40px;
+        }
+        .stats-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(5,1fr);
+            gap: 32px; text-align: center;
+        }
+        .stat-num {
+            font-family: 'DM Serif Display', serif;
+            font-size: 40px; color: white; margin-bottom: 6px;
+        }
+        .stat-lbl { font-size: 13px; color: var(--gray-light); font-weight: 500; }
+        .stat-divider { width: 1px; background: rgba(255,255,255,.08); height: 60px; margin: 0 auto; }
+
+        /* ─── SECTION STYLES ─── */
+        .section { padding: 100px 0; }
+        .section-bg { background: var(--bg-2); }
+        .section-dark { background: var(--dark-2); }
+        .s-tag { font-size: 13px; color: var(--blue); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+        .s-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1.12; letter-spacing: -.5px;
+            color: var(--dark); margin-bottom: 16px;
+        }
+        .s-title-light { color: white; }
+        .s-sub { font-size: 17px; color: var(--gray); line-height: 1.75; max-width: 580px; }
+        .s-sub-light { color: var(--gray-light); }
+        .s-head { margin-bottom: 60px; }
+        .s-head.center { text-align: center; }
+        .s-head.center .s-sub { margin: 0 auto; }
+
+        /* ─── WHY ─── */
+        .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+        .why-card {
+            padding: 38px 32px; border-radius: 18px;
+            border: 1px solid var(--border);
+            transition: all .3s; position: relative; overflow: hidden;
+        }
+        .why-card::before {
+            content:''; position: absolute; top:0; left:0;
+            width:100%; height:3px;
+            background: linear-gradient(90deg, var(--blue), #60a5fa);
+            transform: scaleX(0); transform-origin: left; transition: transform .3s;
+        }
+        .why-card:hover { border-color: var(--blue-mid); transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,.09); }
+        .why-card:hover::before { transform: scaleX(1); }
+        .why-icon { font-size: 32px; margin-bottom: 18px; }
+        .why-title { font-size: 19px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+        .why-text { font-size: 15px; color: var(--gray); line-height: 1.75; }
+
+        /* ─── SERVICES ─── */
+        .services-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
+        .svc-card {
+            background: white; border: 1px solid var(--border);
+            border-radius: 18px; padding: 38px;
+            transition: all .3s;
+        }
+        .svc-card:hover { border-color: var(--blue-mid); box-shadow: 0 10px 36px rgba(29,78,216,.1); transform: translateY(-4px); }
+        .svc-num { font-size: 12px; color: var(--blue); font-weight: 700; letter-spacing: 1.5px; margin-bottom: 14px; }
+        .svc-title { font-size: 22px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+        .svc-desc { font-size: 15px; color: var(--gray); line-height: 1.75; margin-bottom: 20px; }
+        .svc-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .stag { font-size: 12px; padding: 5px 12px; background: var(--blue-pale); color: var(--blue); border-radius: 6px; font-weight: 600; }
+
+        /* ─── PROJECTS ─── */
+        .projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+        .proj-card {
+            border: 1px solid var(--border); border-radius: 18px;
+            overflow: hidden; cursor: pointer; transition: all .3s;
+        }
+        .proj-card:hover { border-color: var(--blue-mid); box-shadow: 0 14px 44px rgba(0,0,0,.11); transform: translateY(-5px); }
+        .proj-thumb {
+            height: 180px; background: var(--blue-pale);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 52px; position: relative; overflow: hidden;
+        }
+        .proj-thumb-overlay {
+            position: absolute; inset:0;
+            background: rgba(29,78,216,.87);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 13px; font-weight: 700; letter-spacing: 2px;
+            opacity: 0; transition: opacity .3s;
+        }
+        .proj-card:hover .proj-thumb-overlay { opacity: 1; }
+        .proj-body { padding: 26px; }
+        .proj-num { font-size: 11px; color: var(--blue); font-weight: 700; letter-spacing: 1.5px; margin-bottom: 8px; }
+        .proj-title { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+        .proj-desc { font-size: 14px; color: var(--gray); line-height: 1.65; margin-bottom: 16px; }
+        .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .ptag { font-size: 11px; padding: 4px 10px; background: var(--bg-2); color: var(--gray); border-radius: 5px; border: 1px solid var(--border); font-weight: 500; }
+
+        /* ─── TIMELINE ─── */
+        .timeline { position: relative; padding-left: 36px; }
+        .timeline::before {
+            content:''; position: absolute; left:4px; top:8px; bottom:8px;
+            width: 2px; background: rgba(255,255,255,.1);
+        }
+        .tl-item { position: relative; margin-bottom: 52px; }
+        .tl-item:last-child { margin-bottom: 0; }
+        .tl-dot {
+            position: absolute; left: -39px; top: 5px;
+            width: 14px; height: 14px; border-radius: 50%;
+            background: var(--blue); border: 2px solid white;
+        }
+        .tl-year { font-size: 12px; color: #60a5fa; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 8px; }
+        .tl-title { font-size: 22px; font-weight: 700; color: white; margin-bottom: 5px; }
+        .tl-company { font-size: 14px; color: var(--gray-light); font-weight: 500; margin-bottom: 14px; }
+        .tl-desc { font-size: 15px; color: #94a3b8; line-height: 1.75; }
+        .tl-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+        .tl-tag {
+            font-size: 12px; padding: 4px 12px;
+            background: rgba(255,255,255,.06); color: #94a3b8;
+            border-radius: 6px; border: 1px solid rgba(255,255,255,.09);
+        }
+
+        /* ─── CERTS ─── */
+        .certs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+        .cert-card {
+            border: 1px solid var(--border); border-radius: 16px;
+            padding: 32px 26px; text-align: center; transition: all .3s;
+            background: white;
+        }
+        .cert-card:hover { border-color: var(--blue-mid); transform: translateY(-4px); box-shadow: 0 10px 28px rgba(29,78,216,.09); }
+        .cert-card.featured { background: var(--blue); border-color: var(--blue); }
+        .cert-card.featured .cert-title,
+        .cert-card.featured .cert-issuer,
+        .cert-card.featured .cert-year { color: white !important; }
+        .cert-icon { font-size: 38px; margin-bottom: 16px; }
+        .cert-title { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+        .cert-issuer { font-size: 13px; color: var(--gray); font-weight: 500; }
+        .cert-year { font-size: 12px; color: var(--gray-light); margin-top: 8px; font-weight: 600; }
+
+        /* ─── BOOK A CALL ─── */
+        .book-section {
+            background: linear-gradient(135deg, var(--blue) 0%, #1e40af 50%, #1d4ed8 100%);
+            padding: 100px 40px; text-align: center;
+        }
+        .book-section h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(32px,5vw,52px);
+            color: white; margin-bottom: 20px; letter-spacing: -.5px;
+        }
+        .book-section p { font-size: 18px; color: rgba(255,255,255,.8); margin-bottom: 48px; max-width: 560px; margin-left: auto; margin-right: auto; }
+        .book-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .book-wa {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: #25d366; color: white;
+            padding: 16px 36px; border-radius: 12px;
+            text-decoration: none; font-weight: 700; font-size: 16px;
+            transition: all .25s;
+        }
+        .book-wa:hover { background: #1da851; transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.2); }
+        .book-email {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: white; color: var(--blue);
+            padding: 16px 36px; border-radius: 12px;
+            text-decoration: none; font-weight: 700; font-size: 16px;
+            transition: all .25s;
+        }
+        .book-email:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.2); }
+        .book-note { color: rgba(255,255,255,.6); font-size: 13px; margin-top: 24px; }
+
+        /* ─── CONTACT ─── */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 72px; align-items: start; }
+        .cinfo-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 32px; }
+        .cinfo-icon {
+            width: 50px; height: 50px; background: var(--blue-pale);
+            border-radius: 14px; display: flex; align-items: center;
+            justify-content: center; font-size: 22px; flex-shrink: 0;
+        }
+        .cinfo-lbl { font-size: 12px; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 5px; }
+        .cinfo-val { font-size: 16px; color: var(--dark); font-weight: 500; }
+        .cinfo-val a { color: var(--blue); text-decoration: none; }
+        .cinfo-val a:hover { text-decoration: underline; }
+        .cform { background: var(--bg-2); border-radius: 22px; padding: 44px; }
+        .fg { margin-bottom: 20px; }
+        .fg label { display: block; font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+        .fg input, .fg textarea, .fg select {
+            width: 100%; padding: 13px 16px;
+            border: 1.5px solid var(--border); border-radius: 10px;
+            font-family: 'DM Sans', sans-serif; font-size: 15px;
+            color: var(--dark); background: white; outline: none;
+            transition: border-color .2s;
+        }
+        .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--blue); }
+        .fg textarea { resize: vertical; min-height: 120px; }
+        .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .btn-submit {
+            width: 100%; padding: 15px; background: var(--blue);
+            color: white; border: none; border-radius: 10px;
+            font-family: 'DM Sans', sans-serif; font-size: 16px;
+            font-weight: 700; cursor: pointer; transition: all .25s;
+        }
+        .btn-submit:hover { background: var(--blue-hover); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(29,78,216,.3); }
+
+        /* ─── FOOTER ─── */
+        footer { background: var(--dark); padding: 64px 40px 32px; }
+        .footer-top { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 64px; margin-bottom: 48px; }
+        .f-brand-name { font-size: 22px; font-weight: 700; color: white; margin-bottom: 14px; }
+        .f-brand-desc { font-size: 14px; color: #64748b; line-height: 1.75; margin-bottom: 24px; }
+        .f-socials { display: flex; gap: 10px; }
+        .f-social {
+            width: 40px; height: 40px; border-radius: 10px;
+            background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08);
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; color: #94a3b8; font-size: 14px;
+            transition: all .2s; font-weight: 700;
+        }
+        .f-social:hover { background: var(--blue); color: white; border-color: var(--blue); }
+        .f-col h4 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 18px; }
+        .f-col a { display: block; font-size: 14px; color: #64748b; text-decoration: none; margin-bottom: 10px; transition: color .2s; }
+        .f-col a:hover { color: white; }
+        .footer-bottom {
+            max-width: 1200px; margin: 0 auto;
+            border-top: 1px solid rgba(255,255,255,.06);
+            padding-top: 28px;
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+        }
+        .f-copy { font-size: 13px; color: #475569; }
+
+        /* ─── MODAL ─── */
+        .modal-bg {
+            display: none; position: fixed; inset:0;
+            background: rgba(15,23,42,.75); z-index: 500;
+            align-items: center; justify-content: center; padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+        .modal-bg.open { display: flex; }
+        .modal-box {
+            background: white; border-radius: 22px;
+            max-width: 680px; width: 100%; max-height: 90vh;
+            overflow-y: auto; padding: 52px; position: relative;
+        }
+        .modal-close-btn {
+            position: absolute; top: 20px; right: 20px;
+            width: 38px; height: 38px; border-radius: 50%;
+            background: var(--bg-2); border: none; cursor: pointer;
+            font-size: 18px; color: var(--gray); transition: background .2s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .modal-close-btn:hover { background: var(--border); }
+        .modal-num { font-size: 12px; color: var(--blue); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+        .modal-box h2 { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--dark); margin-bottom: 24px; letter-spacing: -.3px; }
+        .modal-box h3 { font-size: 17px; font-weight: 700; color: var(--dark); margin: 24px 0 10px; }
+        .modal-box p { font-size: 15px; color: var(--gray); line-height: 1.75; margin-bottom: 10px; }
+        .modal-box ul { margin-left: 20px; }
+        .modal-box li { font-size: 15px; color: var(--gray); line-height: 1.75; margin-bottom: 6px; }
+        .modal-results {
+            display: grid; grid-template-columns: repeat(3,1fr);
+            gap: 16px; margin: 24px 0; padding: 28px;
+            background: var(--bg-2); border-radius: 16px;
+        }
+        .mr-item { text-align: center; }
+        .mr-num { font-family: 'DM Serif Display', serif; font-size: 34px; color: var(--blue); }
+        .mr-lbl { font-size: 12px; color: var(--gray); margin-top: 5px; font-weight: 500; }
+        .modal-cta {
+            display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap;
+        }
+        .modal-cta a {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 24px; border-radius: 10px;
+            font-weight: 700; font-size: 14px; text-decoration: none; transition: all .2s;
+        }
+        .modal-cta-wa { background: #25d366; color: white; }
+        .modal-cta-wa:hover { background: #1da851; }
+        .modal-cta-em { background: var(--blue); color: white; }
+        .modal-cta-em:hover { background: var(--blue-hover); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1100px) {
+            .hero { padding: 120px 40px 80px; }
+            .why-grid { grid-template-columns: repeat(2,1fr); }
+            .projects-grid { grid-template-columns: repeat(2,1fr); }
+            .certs-grid { grid-template-columns: repeat(2,1fr); }
+            .stats-inner { grid-template-columns: repeat(3,1fr); }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 0 20px; }
+            .nav-links { display: none; }
+            .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 40px; }
+            .hero-card { display: none; }
+            .why-grid, .services-grid, .projects-grid, .certs-grid { grid-template-columns: 1fr; }
+            .stats-inner { grid-template-columns: repeat(2,1fr); }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-top { grid-template-columns: 1fr; gap: 40px; }
+            .modal-results { grid-template-columns: 1fr; }
+            .fg-row { grid-template-columns: 1fr; }
+            .modal-box { padding: 32px 24px; }
+            .container { padding: 0 24px; }
+            .book-section { padding: 80px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <a href="#" class="nav-logo">HKS Automations</a>
+    <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+        <a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20visited%20HKS%20Automations%20and%20would%20like%20to%20book%20a%20call." target="_blank" class="nav-btn-wa">💬 WhatsApp</a>
+        <a href="mailto:hks.automations@gmail.com?subject=Project Inquiry" class="nav-btn-email">✉️ Email</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div style="max-width:1400px;margin:0 auto;">
+<div class="hero">
+    <div>
+        <div class="hero-badge"><span class="badge-dot"></span> Available for Projects</div>
+        <h1>Production-Grade <em>AI Automation</em> for Real Business</h1>
+        <p class="hero-desc">Built by an engineer with 14+ years at GEA & Siemens — deep process analysis, enterprise-grade reliability, and systems that actually work in production.</p>
+        <div class="hero-actions">
+            <a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20visited%20HKS%20Automations%20and%20would%20like%20to%20book%20a%20free%20consultation." target="_blank" class="btn-wa">💬 Book a Call on WhatsApp</a>
+            <a href="mailto:hks.automations@gmail.com?subject=Project Inquiry" class="btn-email-hero">✉️ Send an Email</a>
+            <a href="#projects" class="btn-ghost">View Projects →</a>
+        </div>
+        <div class="hero-trust">
+            <div class="trust-pill"><span>🏆</span> n8n Level 2 Certified</div>
+            <div class="trust-pill"><span>🏭</span> GEA &amp; Siemens Background</div>
+            <div class="trust-pill"><span>🌍</span> Available Globally</div>
+        </div>
+    </div>
+    <div class="hero-card">
+        <div class="hc-label">ENGINEER CREDENTIALS</div>
+        <div class="hc-stats">
+            <div class="hc-stat"><div class="hc-stat-num">14+</div><div class="hc-stat-lbl">Years Enterprise Exp.</div></div>
+            <div class="hc-stat"><div class="hc-stat-num">8+</div><div class="hc-stat-lbl">Production Systems</div></div>
+            <div class="hc-stat"><div class="hc-stat-num">40%</div><div class="hc-stat-lbl">Avg. Efficiency Gain</div></div>
+            <div class="hc-stat"><div class="hc-stat-num">99.9%</div><div class="hc-stat-lbl">System Reliability</div></div>
+        </div>
+        <div class="hc-cert">
+            <div class="hc-cert-icon">🏆</div>
+            <div>
+                <div class="hc-cert-title">n8n Level 2 Certified</div>
+                <div class="hc-cert-sub">Advanced Workflow Automation · 2026</div>
+            </div>
+        </div>
+        <div class="hc-contact">
+            <a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20would%20like%20to%20book%20a%20call." target="_blank" class="hc-contact-btn hc-wa">💬 +91 99257 98962 · WhatsApp</a>
+            <a href="mailto:hks.automations@gmail.com" class="hc-contact-btn hc-em">✉️ hks.automations@gmail.com</a>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+    <div class="stats-inner">
+        <div><div class="stat-num">14+</div><div class="stat-lbl">Years Enterprise Experience</div></div>
+        <div><div class="stat-num">n8n L2</div><div class="stat-lbl">Level 2 Certified Engineer</div></div>
+        <div><div class="stat-num">8+</div><div class="stat-lbl">Production Systems Built</div></div>
+        <div><div class="stat-num">40%</div><div class="stat-lbl">Average Efficiency Gain</div></div>
+        <div><div class="stat-num">24/7</div><div class="stat-lbl">Automated Operations</div></div>
+    </div>
+</div>
+
+<!-- WHY HKS -->
+<section class="section" id="why">
+    <div class="container">
+        <div class="s-head">
+            <div class="s-tag">WHY HKS AUTOMATIONS</div>
+            <h2 class="s-title">Not just code.<br>Enterprise-grade reliability.</h2>
+            <p class="s-sub">Unlike typical automation freelancers, I bring 14+ years of operational experience from GEA and Siemens — I understand your business before building a single workflow.</p>
+        </div>
+        <div class="why-grid">
+            <div class="why-card">
+                <div class="why-icon">🔍</div>
+                <div class="why-title">Process Analysis First</div>
+                <p class="why-text">I map your entire workflow before automating anything. 14 years identifying operational bottlenecks at enterprise level means I know exactly what to automate — and what not to.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🛡️</div>
+                <div class="why-title">Enterprise-Grade Reliability</div>
+                <p class="why-text">Every system includes error handling, retry logic, monitoring, and human override checkpoints. Inspired by SCADA systems I designed for 99.9% uptime at Siemens.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🧠</div>
+                <div class="why-title">Business + Technical Mindset</div>
+                <p class="why-text">I speak both languages — technical enough to build complex LLM pipelines, business-savvy enough to measure ROI and explain results to non-technical leadership.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">🏆</div>
+                <div class="why-title">n8n Level 2 Certified</div>
+                <p class="why-text">One of the few engineers globally with n8n Level 2 certification. Advanced capability in autonomous workflows, complex API integrations, and multi-system data routing.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">📦</div>
+                <div class="why-title">Full Handover &amp; Support</div>
+                <p class="why-text">Every project includes complete documentation, team training session, and 30 days of optimization support. You own the code, fully understand it, and can maintain it.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">⚡</div>
+                <div class="why-title">Production-Ready from Day 1</div>
+                <p class="why-text">No experiments, no demos. Every system is built and thoroughly tested for production — with proper edge case handling, logging, and monitoring before delivery.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section section-bg" id="services">
+    <div class="container">
+        <div class="s-head center">
+            <div class="s-tag">SERVICES</div>
+            <h2 class="s-title">What I Build For You</h2>
+            <p class="s-sub">End-to-end automation systems designed around your specific workflow — not generic templates.</p>
+        </div>
+        <div class="services-grid">
+            <div class="svc-card">
+                <div class="svc-num">01</div>
+                <div class="svc-title">AI Lead Generation &amp; Outreach</div>
+                <p class="svc-desc">End-to-end pipeline that finds leads, qualifies them using AI, scores by conversion probability, and sends personalized outreach automatically. Integrates with your existing CRM.</p>
+                <div class="svc-tags"><span class="stag">n8n</span><span class="stag">Groq LLM</span><span class="stag">Gmail API</span><span class="stag">Google Sheets</span></div>
+            </div>
+            <div class="svc-card">
+                <div class="svc-num">02</div>
+                <div class="svc-title">AI Customer Support (RAG)</div>
+                <p class="svc-desc">RAG-based support system that answers questions from your knowledge base with 90%+ accuracy. Includes confidence scoring and intelligent escalation to human agents when needed.</p>
+                <div class="svc-tags"><span class="stag">RAG</span><span class="stag">Flowise</span><span class="stag">n8n</span><span class="stag">Vector DB</span></div>
+            </div>
+            <div class="svc-card">
+                <div class="svc-num">03</div>
+                <div class="svc-title">Workflow Automation &amp; Integration</div>
+                <p class="svc-desc">Complex multi-step workflows connecting your CRM, ERP, email, Slack, and databases. Eliminate manual data entry and reduce processing time by up to 40%.</p>
+                <div class="svc-tags"><span class="stag">n8n</span><span class="stag">REST APIs</span><span class="stag">SQL</span><span class="stag">Webhooks</span></div>
+            </div>
+            <div class="svc-card">
+                <div class="svc-num">04</div>
+                <div class="svc-title">n8n Consulting &amp; Implementation</div>
+                <p class="svc-desc">Hands-on n8n implementation for your team. From architecture design to deployment, training, and ongoing optimization — backed by Level 2 certified expertise.</p>
+                <div class="svc-tags"><span class="stag">n8n L2</span><span class="stag">Architecture</span><span class="stag">Training</span><span class="stag">Consulting</span></div>
+            </div>
+            <div class="svc-card">
+                <div class="svc-num">05</div>
+                <div class="svc-title">LLM-Powered AI Agents</div>
+                <p class="svc-desc">Custom AI agents that process documents, generate reports, answer internal queries, and automate decision-making — all with human-in-the-loop safeguards built in.</p>
+                <div class="svc-tags"><span class="stag">OpenAI</span><span class="stag">Claude</span><span class="stag">Flowise</span><span class="stag">Groq</span></div>
+            </div>
+            <div class="svc-card">
+                <div class="svc-num">06</div>
+                <div class="svc-title">Process Analysis &amp; Automation Roadmap</div>
+                <p class="svc-desc">Before building anything, I map your complete operational workflow, identify high-friction points, and deliver a prioritized automation roadmap with ROI estimates per initiative.</p>
+                <div class="svc-tags"><span class="stag">Process Mapping</span><span class="stag">ROI Analysis</span><span class="stag">Strategy</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+    <div class="container">
+        <div class="s-head">
+            <div class="s-tag">FEATURED PROJECTS</div>
+            <h2 class="s-title">Production Systems<br>Already Built &amp; Deployed</h2>
+            <p class="s-sub">Click any project to see the full challenge, solution, and measurable results.</p>
+        </div>
+        <div class="projects-grid">
+            <div class="proj-card" onclick="openModal('m1')">
+                <div class="proj-thumb" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);">🎯<div class="proj-thumb-overlay">VIEW DETAILS</div></div>
+                <div class="proj-body">
+                    <div class="proj-num">PROJECT 01</div>
+                    <div class="proj-title">Enterprise Enquiry Tracking System</div>
+                    <p class="proj-desc">n8n workflow that parses emails via IMAP, extracts key data using LLMs, and structures it into a SQL database — replacing manual Excel logs entirely.</p>
+                    <div class="proj-tags"><span class="ptag">n8n</span><span class="ptag">SQL</span><span class="ptag">LLM</span><span class="ptag">IMAP</span></div>
+                </div>
+            </div>
+            <div class="proj-card" onclick="openModal('m2')">
+                <div class="proj-thumb" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);">📄<div class="proj-thumb-overlay">VIEW DETAILS</div></div>
+                <div class="proj-body">
+                    <div class="proj-num">PROJECT 02</div>
+                    <div class="proj-title">AI Content Generator (EdTech)</div>
+                    <p class="proj-desc">Looping n8n workflow generating 10,000+ unique age-specific educational worksheets using GPT-4 with dynamic prompt engineering.</p>
+                    <div class="proj-tags"><span class="ptag">n8n</span><span class="ptag">OpenAI GPT-4</span><span class="ptag">Flowise</span><span class="ptag">Bulk Processing</span></div>
+                </div>
+            </div>
+            <div class="proj-card" onclick="openModal('m3')">
+                <div class="proj-thumb" style="background:linear-gradient(135deg,#fdf4ff,#fae8ff);">🔗<div class="proj-thumb-overlay">VIEW DETAILS</div></div>
+                <div class="proj-body">
+                    <div class="proj-num">PROJECT 03</div>
+                    <div class="proj-title">Lead Enrichment &amp; Outreach Pipeline</div>
+                    <p class="proj-desc">Agentic workflow that scrapes profiles, enriches via Apollo/Clearbit APIs, and generates personalized outreach using Claude 3.</p>
+                    <div class="proj-tags"><span class="ptag">n8n</span><span class="ptag">Apollo API</span><span class="ptag">Claude 3</span><span class="ptag">AI Agents</span></div>
+                </div>
+            </div>
+            <div class="proj-card" onclick="openModal('m4')">
+                <div class="proj-thumb" style="background:linear-gradient(135deg,#fff7ed,#ffedd5);">💬<div class="proj-thumb-overlay">VIEW DETAILS</div></div>
+                <div class="proj-body">
+                    <div class="proj-num">PROJECT 04</div>
+                    <div class="proj-title">AI Customer Support RAG System</div>
+                    <p class="proj-desc">RAG-based support assistant using Flowise and n8n that answers from your knowledge base with 90%+ accuracy and auto-escalation.</p>
+                    <div class="proj-tags"><span class="ptag">RAG</span><span class="ptag">Flowise</span><span class="ptag">n8n</span><span class="ptag">Vector DB</span></div>
+                </div>
+            </div>
+            <div class="proj-card" onclick="openModal('m5')">
+                <div class="proj-thumb" style="background:linear-gradient(135deg,#eff6ff,#e0f2fe);">📧<div class="proj-thumb-overlay">VIEW DETAILS</div></div>
+                <div class="proj-body">
+                    <div class="proj-num">PROJECT 05</div>
+                    <div class="proj-title">Gmail AI Organizer</div>
+                    <p class="proj-desc">Intelligent email classification that auto-categorizes, prioritizes, and labels emails using AI — reducing inbox management time by 80%.</p>
+                    <div class="proj-tags"><span class="ptag">n8n</span><span class="ptag">Gmail API</span><span class="ptag">Groq LLM</span><span class="ptag">Classification</span></div>
+                </div>
+            </div>
+            <div class="proj-card" onclick="openModal('m6')">
+                <div class="proj-thumb" style="background:linear-gradient(135deg,#f0fdf4,#d1fae5);">📅<div class="proj-thumb-overlay">VIEW DETAILS</div></div>
+                <div class="proj-body">
+                    <div class="proj-num">PROJECT 06</div>
+                    <div class="proj-title">Appointment &amp; Follow-Up Automation</div>
+                    <p class="proj-desc">Complete scheduling automation with WhatsApp integration, smart reminders, rescheduling logic, and post-appointment follow-ups.</p>
+                    <div class="proj-tags"><span class="ptag">n8n</span><span class="ptag">WhatsApp API</span><span class="ptag">CRM</span><span class="ptag">Calendar API</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience" style="background:var(--dark-2);">
+    <div class="container">
+        <div class="s-head">
+            <div class="s-tag" style="color:#60a5fa;">CAREER JOURNEY</div>
+            <h2 class="s-title s-title-light">14+ Years of Enterprise Automation</h2>
+            <p class="s-sub s-sub-light">From programming PLCs at Siemens to building AI-powered workflows — a career built entirely around making complex systems work reliably.</p>
+        </div>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2026 — PRESENT</div>
+                <div class="tl-title">n8n Level 2 Certified Engineer</div>
+                <div class="tl-company">HKS Automations · Independent Practice</div>
+                <p class="tl-desc">Achieved n8n Level 2 Certification and now building production-grade AI automation systems for global clients — combining deep enterprise operations knowledge with cutting-edge LLM and workflow technology.</p>
+                <div class="tl-tags"><span class="tl-tag">n8n L2</span><span class="tl-tag">LLM Agents</span><span class="tl-tag">RAG Systems</span><span class="tl-tag">API Integration</span></div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2018 — PRESENT</div>
+                <div class="tl-title">Specialist Service Execution Engineer</div>
+                <div class="tl-company">GEA Process Engineering · Vadodara, India</div>
+                <p class="tl-desc">Led digital transformation initiatives including an internal Enquiry Tracking System, CRM-ERP integration for a single source of truth, and automation of routine client reports saving 15+ hours monthly for the engineering team.</p>
+                <div class="tl-tags"><span class="tl-tag">Digital Transformation</span><span class="tl-tag">SQL</span><span class="tl-tag">Power BI</span><span class="tl-tag">Process Automation</span></div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2014 — 2018</div>
+                <div class="tl-title">Senior Executive Automation Service</div>
+                <div class="tl-company">Siemens Limited · Vadodara, India</div>
+                <p class="tl-desc">Programmed PCS7 and PLCs with complex logic and state machines. Designed SCADA systems requiring 99.9% uptime — instilling the reliability-first mindset that now drives every automation system I build.</p>
+                <div class="tl-tags"><span class="tl-tag">PCS7</span><span class="tl-tag">PLC Programming</span><span class="tl-tag">SCADA</span><span class="tl-tag">99.9% Uptime</span></div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2010 — 2014</div>
+                <div class="tl-title">Early Career · Design &amp; Systems Engineering</div>
+                <div class="tl-company">SAI Technologies · Flexible Automation · Metalandes, Colombia</div>
+                <p class="tl-desc">Designed I&C systems for water treatment plants, supported automation sales with Mitsubishi/Rockwell templates, and completed an international engineering program in Colombia focused on ISA standards.</p>
+                <div class="tl-tags"><span class="tl-tag">I&C Systems</span><span class="tl-tag">ISA Standards</span><span class="tl-tag">Mitsubishi/Rockwell</span><span class="tl-tag">International</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="section section-bg" id="certs">
+    <div class="container">
+        <div class="s-head center">
+            <div class="s-tag">CREDENTIALS</div>
+            <h2 class="s-title">Certifications &amp; Education</h2>
+        </div>
+        <div class="certs-grid">
+            <div class="cert-card featured">
+                <div class="cert-icon">🏆</div>
+                <div class="cert-title">n8n Level 2 Certification</div>
+                <div class="cert-issuer">Advanced Workflow Automation</div>
+                <div class="cert-year">2026</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">📊</div>
+                <div class="cert-title">Google Data Analytics</div>
+                <div class="cert-issuer">Professional Certificate · Google</div>
+                <div class="cert-year">Completed</div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">🎓</div>
+                <div class="cert-title">B.E. Electronics &amp; Communication</div>
+                <div class="cert-issuer">Gujarat University</div>
+                <div class="cert-year">Engineering Degree</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BOOK A CALL -->
+<div class="book-section">
+    <h2>Ready to Automate Your Operations?</h2>
+    <p>Book a free 30-minute consultation. I'll analyse your workflow, identify automation opportunities, and tell you exactly what's possible — no obligation.</p>
+    <div class="book-btns">
+        <a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20found%20your%20website%20and%20would%20like%20to%20book%20a%20free%2030-minute%20consultation." target="_blank" class="book-wa">💬 Book a Call on WhatsApp</a>
+        <a href="mailto:hks.automations@gmail.com?subject=Free Consultation Request&body=Hi Harvish, I would like to book a free consultation to discuss my automation needs." class="book-email">✉️ Send an Email</a>
+    </div>
+    <p class="book-note">Typically responds within 2 hours · Available Mon–Sat, 9am–7pm IST</p>
+</div>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+    <div class="container">
+        <div class="s-head">
+            <div class="s-tag">GET IN TOUCH</div>
+            <h2 class="s-title">Let's Talk About<br>Your Project</h2>
+            <p class="s-sub">Whether you have a clear brief or just an idea — reach out and let's figure out the best automation approach for your business.</p>
+        </div>
+        <div class="contact-grid">
+            <div>
+                <div class="cinfo-item">
+                    <div class="cinfo-icon">💬</div>
+                    <div>
+                        <div class="cinfo-lbl">WhatsApp (Fastest)</div>
+                        <div class="cinfo-val"><a href="https://wa.me/919925798962" target="_blank">+91 99257 98962</a></div>
+                    </div>
+                </div>
+                <div class="cinfo-item">
+                    <div class="cinfo-icon">✉️</div>
+                    <div>
+                        <div class="cinfo-lbl">Email</div>
+                        <div class="cinfo-val"><a href="mailto:hks.automations@gmail.com">hks.automations@gmail.com</a></div>
+                    </div>
+                </div>
+                <div class="cinfo-item">
+                    <div class="cinfo-icon">💼</div>
+                    <div>
+                        <div class="cinfo-lbl">LinkedIn</div>
+                        <div class="cinfo-val"><a href="https://www.linkedin.com/in/hks-automations" target="_blank">linkedin.com/in/hks-automations</a></div>
+                    </div>
+                </div>
+                <div class="cinfo-item">
+                    <div class="cinfo-icon">🐙</div>
+                    <div>
+                        <div class="cinfo-lbl">GitHub</div>
+                        <div class="cinfo-val"><a href="https://github.com/hksautomations" target="_blank">github.com/hksautomations</a></div>
+                    </div>
+                </div>
+                <div class="cinfo-item">
+                    <div class="cinfo-icon">📍</div>
+                    <div>
+                        <div class="cinfo-lbl">Location</div>
+                        <div class="cinfo-val">Vadodara, Gujarat, India<br><small style="color:var(--gray);font-size:13px;">Available for remote projects globally</small></div>
+                    </div>
+                </div>
+            </div>
+            <div class="cform">
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="fg-row">
+                        <div class="fg"><label>Your Name</label><input type="text" name="name" placeholder="John Smith" required></div>
+                        <div class="fg"><label>Email Address</label><input type="email" name="email" placeholder="john@company.com" required></div>
+                    </div>
+                    <div class="fg">
+                        <label>Service Needed</label>
+                        <select name="service">
+                            <option>Lead Generation Automation</option>
+                            <option>AI Customer Support (RAG)</option>
+                            <option>Workflow Automation &amp; Integration</option>
+                            <option>n8n Consulting &amp; Implementation</option>
+                            <option>LLM-Powered AI Agents</option>
+                            <option>Process Analysis &amp; Roadmap</option>
+                            <option>Other / Not Sure Yet</option>
+                        </select>
+                    </div>
+                    <div class="fg"><label>Tell me about your project</label><textarea name="message" placeholder="Describe your workflow, the problem you're facing, and what outcome you're looking for..."></textarea></div>
+                    <button type="submit" class="btn-submit">Send Message →</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-top">
+        <div>
+            <div class="f-brand-name">HKS Automations</div>
+            <p class="f-brand-desc">Production-grade AI automation systems built by an engineer with 14+ years enterprise experience at GEA and Siemens. n8n Level 2 Certified. Reliable, documented, and built for real operations.</p>
+            <div class="f-socials">
+                <a href="https://github.com/hksautomations" target="_blank" class="f-social">GH</a>
+                <a href="https://www.linkedin.com/in/hks-automations" target="_blank" class="f-social">LI</a>
+                <a href="https://wa.me/919925798962" target="_blank" class="f-social">WA</a>
+                <a href="mailto:hks.automations@gmail.com" class="f-social">✉</a>
+            </div>
+        </div>
+        <div class="f-col">
+            <h4>Services</h4>
+            <a href="#services">Lead Generation</a>
+            <a href="#services">AI Customer Support</a>
+            <a href="#services">Workflow Automation</a>
+            <a href="#services">n8n Consulting</a>
+            <a href="#services">LLM Agents</a>
+            <a href="#services">Process Analysis</a>
+        </div>
+        <div class="f-col">
+            <h4>Quick Links</h4>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#certs">Certifications</a>
+            <a href="#contact">Contact</a>
+            <a href="https://wa.me/919925798962" target="_blank">WhatsApp</a>
+            <a href="mailto:hks.automations@gmail.com">Email</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="f-copy">© 2026 HKS Automations · Harvish Shah · All rights reserved.</div>
+        <div class="f-copy">Vadodara, India · Available globally for remote projects</div>
+    </div>
+</footer>
+
+<!-- MODALS -->
+<div class="modal-bg" id="m1" onclick="bgClose(event,'m1')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m1')">✕</button><div class="modal-num">PROJECT 01</div><h2>Enterprise Enquiry Tracking System</h2><h3>Challenge</h3><p>Sales pipeline data was trapped in unstructured emails and manual Excel logs, causing visibility gaps and delayed responses to high-value enquiries.</p><h3>Solution</h3><p>Architected an n8n workflow that parses incoming emails via IMAP, extracts key data points using Regex and LLMs, then automatically structures the data into a SQL database — creating a real-time pipeline dashboard accessible to the whole team.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">40%</div><div class="mr-lbl">Processing Time Reduced</div></div><div class="mr-item"><div class="mr-num">0</div><div class="mr-lbl">Manual Data Entry</div></div><div class="mr-item"><div class="mr-num">100%</div><div class="mr-lbl">Pipeline Visibility</div></div></div><h3>Tech Stack</h3><ul><li>n8n for workflow orchestration</li><li>IMAP for email parsing</li><li>LLM for intelligent data extraction</li><li>SQL database for structured storage</li><li>Webhooks and JSON transforms</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20a%20similar%20system%20to%20your%20Enterprise%20Enquiry%20Tracking%20project." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in Enterprise Enquiry Tracking System" class="modal-cta-em">✉️ Send an Email</a></div></div></div>
+
+<div class="modal-bg" id="m2" onclick="bgClose(event,'m2')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m2')">✕</button><div class="modal-num">PROJECT 02</div><h2>AI Content Generator (EdTech)</h2><h3>Challenge</h3><p>An EdTech client needed to generate 10,000+ unique, age-specific educational worksheets at scale — completely impossible to do manually with consistent quality and variety.</p><h3>Solution</h3><p>Built a looping workflow in n8n integrated with OpenAI GPT-4. Implemented dynamic prompt engineering to vary difficulty levels across ages 2–8, with automatic rate limiting, error handling, and bulk processing to handle high-volume generation reliably.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">10k+</div><div class="mr-lbl">Worksheets Generated</div></div><div class="mr-item"><div class="mr-num">6</div><div class="mr-lbl">Age Groups Covered</div></div><div class="mr-item"><div class="mr-num">0</div><div class="mr-lbl">Manual Errors</div></div></div><h3>Tech Stack</h3><ul><li>n8n looping workflows</li><li>OpenAI GPT-4 API</li><li>Flowise for agent logic</li><li>Dynamic prompt engineering</li><li>Bulk processing with rate limiting and error handling</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20the%20AI%20Content%20Generator%20system." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in AI Content Generator" class="modal-cta-em">✉️ Send an Email</a></div></div></div>
+
+<div class="modal-bg" id="m3" onclick="bgClose(event,'m3')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m3')">✕</button><div class="modal-num">PROJECT 03</div><h2>Lead Enrichment &amp; Outreach Pipeline</h2><h3>Challenge</h3><p>Cold outreach required gathering data from multiple fragmented sources manually — consuming hours of sales team time and producing inconsistent, generic messages.</p><h3>Solution</h3><p>Developed an agentic workflow that automatically scrapes target profiles, enriches data via Clearbit and Apollo APIs, and generates highly personalized outreach messages using Claude 3 — based on company context, role, and recent signals.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">3×</div><div class="mr-lbl">Faster Lead Processing</div></div><div class="mr-item"><div class="mr-num">50%</div><div class="mr-lbl">Higher Response Rate</div></div><div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Automated Operation</div></div></div><h3>Tech Stack</h3><ul><li>n8n agentic workflows</li><li>HTTP Requests for API calls</li><li>Clearbit and Apollo APIs for enrichment</li><li>Claude 3 for personalized copy generation</li><li>JSON parsing and data transformation</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20a%20Lead%20Enrichment%20Pipeline." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in Lead Enrichment Pipeline" class="modal-cta-em">✉️ Send an Email</a></div></div></div>
+
+<div class="modal-bg" id="m4" onclick="bgClose(event,'m4')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m4')">✕</button><div class="modal-num">PROJECT 04</div><h2>AI Customer Support RAG System</h2><h3>Challenge</h3><p>Support teams spending the majority of their time answering the same repetitive questions, leading to slow response times, agent burnout, and customer frustration.</p><h3>Solution</h3><p>Built a RAG-based customer support system using Flowise and n8n that automatically answers questions from the company knowledge base. Includes confidence scoring — low-confidence answers are immediately escalated to human agents with full context.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">90%+</div><div class="mr-lbl">Answer Accuracy</div></div><div class="mr-item"><div class="mr-num">70%</div><div class="mr-lbl">Tickets Auto-Resolved</div></div><div class="mr-item"><div class="mr-num">Instant</div><div class="mr-lbl">Response Time</div></div></div><h3>Tech Stack</h3><ul><li>Flowise for RAG pipeline</li><li>n8n for orchestration and routing</li><li>Vector database for knowledge base storage</li><li>Confidence scoring for smart human handoff</li><li>OpenAI / Groq LLM integration</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20an%20AI%20Customer%20Support%20RAG%20system." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in AI Customer Support RAG System" class="modal-cta-em">✉️ Send an Email</a></div></div></div>
+
+<div class="modal-bg" id="m5" onclick="bgClose(event,'m5')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m5')">✕</button><div class="modal-num">PROJECT 05</div><h2>Gmail AI Organizer</h2><h3>Challenge</h3><p>Professionals receiving 100+ emails daily spending excessive time on inbox management — sorting, prioritizing, and finding what actually needs attention among the noise.</p><h3>Solution</h3><p>Intelligent email classification system using n8n and Gmail API that reads each incoming email, classifies by urgency and category using Groq LLM, and automatically applies labels and folders — creating a self-organizing inbox.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">80%</div><div class="mr-lbl">Inbox Time Saved</div></div><div class="mr-item"><div class="mr-num">5hrs</div><div class="mr-lbl">Saved Per Week</div></div><div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Automated Sorting</div></div></div><h3>Tech Stack</h3><ul><li>n8n for orchestration</li><li>Gmail API for email access and labeling</li><li>Groq LLM for intelligent classification</li><li>Custom JavaScript rule engine</li><li>Priority scoring logic</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20the%20Gmail%20AI%20Organizer." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in Gmail AI Organizer" class="modal-cta-em">✉️ Send an Email</a></div></div></div>
+
+<div class="modal-bg" id="m6" onclick="bgClose(event,'m6')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m6')">✕</button><div class="modal-num">PROJECT 06</div><h2>Appointment &amp; Follow-Up Automation</h2><h3>Challenge</h3><p>Service businesses losing revenue from missed follow-ups, high no-show rates due to lack of reminders, and staff time consumed by manual scheduling and confirmation calls.</p><h3>Solution</h3><p>Complete appointment lifecycle automation — from initial booking confirmation through WhatsApp reminders, rescheduling logic, post-appointment follow-ups, and review requests. Runs 24/7 without any human intervention.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">60%</div><div class="mr-lbl">Fewer No-Shows</div></div><div class="mr-item"><div class="mr-num">100%</div><div class="mr-lbl">Follow-Up Rate</div></div><div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Booking Available</div></div></div><h3>Tech Stack</h3><ul><li>n8n for workflow orchestration</li><li>WhatsApp API for messaging</li><li>CRM integration for customer data</li><li>Calendar API for scheduling</li><li>Intelligent rescheduling and conflict resolution logic</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20Appointment%20and%20Follow-Up%20Automation." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in Appointment Follow-Up Automation" class="modal-cta-em">✉️ Send an Email</a></div></div></div>
+
+<script>
+function openModal(id) {
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeM(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+}
+function bgClose(e, id) {
+    if (e.target === document.getElementById(id)) closeM(id);
+}
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-bg.open').forEach(m => {
+            m.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    }
+});
+</script>
+</body>
+</html>

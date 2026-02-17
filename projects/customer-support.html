@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Customer Support (RAG) | HKS Automations</title>
+    <meta name="description" content="RAG-based support system that answers customer questions from your knowledge base automatically with 90%+ accuracy and intelligent human escalation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #1d4ed8; --blue-hover: #1e40af; --blue-pale: #eff6ff;
+            --blue-mid: #bfdbfe; --dark: #0f172a; --dark-2: #1e293b;
+            --gray: #64748b; --gray-light: #94a3b8; --border: #e2e8f0;
+            --bg: #ffffff; --bg-2: #f8fafc;
+        }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--dark); line-height: 1.6; }
+        nav {
+            position: fixed; top:0; width:100%; z-index:200;
+            background: rgba(255,255,255,0.94); backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border); height:66px;
+            display:flex; align-items:center; padding:0 40px; justify-content:space-between;
+        }
+        .nav-logo { font-size:19px; font-weight:700; color:var(--blue); text-decoration:none; }
+        .back-link {
+            display:inline-flex; align-items:center; gap:8px;
+            color:var(--gray); text-decoration:none; font-size:15px; font-weight:500;
+            transition:color .2s;
+        }
+        .back-link:hover { color:var(--blue); }
+        .nav-right { display:flex; gap:10px; }
+        .nav-wa { display:flex; align-items:center; gap:7px; background:#25d366; color:white; padding:9px 16px; border-radius:8px; text-decoration:none; font-size:14px; font-weight:600; transition:all .2s; }
+        .nav-wa:hover { background:#1da851; transform:translateY(-1px); }
+        .nav-em { display:flex; align-items:center; gap:7px; background:var(--blue); color:white; padding:9px 16px; border-radius:8px; text-decoration:none; font-size:14px; font-weight:600; transition:all .2s; }
+        .nav-em:hover { background:var(--blue-hover); transform:translateY(-1px); }
+        .container { max-width:960px; margin:0 auto; padding:0 40px; }
+        .hero-section { padding:110px 0 60px; background:linear-gradient(160deg,var(--bg-2) 0%,var(--bg) 60%); }
+        .proj-num { font-size:13px; color:var(--blue); font-weight:700; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:14px; }
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(32px,5vw,52px); line-height:1.1;
+            letter-spacing:-1px; color:var(--dark); margin-bottom:20px;
+        }
+        .subtitle { font-size:19px; color:var(--gray); line-height:1.75; margin-bottom:28px; max-width:720px; }
+        .tag-row { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:36px; }
+        .tag { font-size:12px; padding:6px 14px; background:var(--blue-pale); color:var(--blue); border-radius:8px; font-weight:600; }
+        .proj-image {
+            width:100%; height:380px; background:var(--bg-2);
+            border-radius:20px; display:flex; align-items:center; justify-content:center;
+            border:2px dashed var(--border); margin-bottom:70px; overflow:hidden;
+            flex-direction:column; gap:14px;
+        }
+        .proj-image img { width:100%; height:100%; object-fit:cover; border-radius:18px; }
+        .proj-image-placeholder { font-size:64px; }
+        .proj-image-hint { font-size:14px; color:var(--gray); font-weight:500; }
+        .content-block { margin-bottom:56px; }
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size:clamp(24px,3vw,36px); color:var(--dark);
+            margin-bottom:18px; letter-spacing:-.3px;
+        }
+        h3 { font-size:20px; font-weight:700; color:var(--dark); margin:28px 0 12px; }
+        p { font-size:16px; color:var(--gray); line-height:1.8; margin-bottom:14px; }
+        ul { margin-left:24px; margin-bottom:16px; }
+        li { font-size:16px; color:var(--gray); line-height:1.8; margin-bottom:8px; }
+        strong { color:var(--dark); font-weight:600; }
+        .results-grid {
+            display:grid; grid-template-columns:repeat(3,1fr);
+            gap:24px; margin:32px 0; padding:36px;
+            background:var(--bg-2); border-radius:20px;
+        }
+        .result-item { text-align:center; }
+        .result-num {
+            font-family: 'DM Serif Display', serif;
+            font-size:42px; color:var(--blue); margin-bottom:8px;
+        }
+        .result-lbl { font-size:13px; color:var(--gray); font-weight:600; }
+        .steps-list { list-style:none; margin:0; padding:0; }
+        .steps-list li {
+            display:flex; align-items:flex-start; gap:16px;
+            padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:0;
+        }
+        .steps-list li:last-child { border-bottom:none; }
+        .step-num {
+            width:32px; height:32px; background:var(--blue); color:white;
+            border-radius:50%; display:flex; align-items:center; justify-content:center;
+            font-size:13px; font-weight:700; flex-shrink:0; margin-top:2px;
+        }
+        .stack-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:20px; }
+        .stack-item {
+            background:var(--bg-2); border:1px solid var(--border);
+            border-radius:12px; padding:18px 20px;
+            font-size:15px; color:var(--dark); font-weight:500;
+            display:flex; align-items:center; gap:10px;
+        }
+        .stack-dot { width:8px; height:8px; background:var(--blue); border-radius:50%; flex-shrink:0; }
+        .cta-box {
+            background:linear-gradient(135deg,var(--dark) 0%,#1e293b 100%);
+            border-radius:24px; padding:64px 48px; text-align:center; margin:80px 0 60px;
+        }
+        .cta-box h2 { color:white; margin-bottom:16px; }
+        .cta-box p { color:#94a3b8; margin-bottom:36px; font-size:17px; }
+        .cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+        .cta-wa {
+            display:inline-flex; align-items:center; gap:9px;
+            background:#25d366; color:white;
+            padding:15px 32px; border-radius:10px;
+            text-decoration:none; font-weight:700; font-size:15px; transition:all .25s;
+        }
+        .cta-wa:hover { background:#1da851; transform:translateY(-3px); }
+        .cta-em {
+            display:inline-flex; align-items:center; gap:9px;
+            background:white; color:var(--dark);
+            padding:15px 32px; border-radius:10px;
+            text-decoration:none; font-weight:700; font-size:15px; transition:all .25s;
+        }
+        .cta-em:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(255,255,255,.15); }
+        footer { background:var(--dark); padding:40px; text-align:center; }
+        .footer-text { font-size:14px; color:#475569; }
+        .footer-text a { color:#64748b; text-decoration:none; }
+        .footer-text a:hover { color:white; }
+        @media (max-width:768px) {
+            nav { padding:0 20px; }
+            .container { padding:0 24px; }
+            .results-grid { grid-template-columns:1fr; }
+            .stack-grid { grid-template-columns:1fr; }
+            .cta-box { padding:40px 24px; }
+            .proj-image { height:240px; }
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="../index.html" class="nav-logo">HKS Automations</a>
+    <a href="../index.html" class="back-link">← Back to Portfolio</a>
+    <div class="nav-right">
+        <a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20AI%20Customer%20Support%20(RAG)" target="_blank" class="nav-wa">💬 WhatsApp</a>
+        <a href="mailto:hks.automations@gmail.com?subject=Inquiry about AI Customer Support (RAG)" class="nav-em">✉️ Email</a>
+    </div>
+</nav>
+
+<div class="hero-section">
+    <div class="container">
+        <div class="proj-num">PROJECT 02</div>
+        <h1>AI Customer Support (RAG)</h1>
+        <p class="subtitle">RAG-based support system that answers customer questions from your knowledge base automatically with 90%+ accuracy and intelligent human escalation.</p>
+        <div class="tag-row"><span class="tag">RAG</span><span class="tag">Flowise</span><span class="tag">n8n</span><span class="tag">Vector DB</span><span class="tag">Support</span></div>
+    </div>
+</div>
+
+<div style="padding:0 0 40px;">
+    <div class="container">
+        <div class="proj-image">
+            <div class="proj-image-placeholder">💬</div>
+            <div class="proj-image-hint">📸 Add your n8n workflow screenshot here — see HOW-TO-ADD-IMAGES.md</div>
+        </div>
+
+        <div class="content-block">
+            <h2>The Problem</h2>
+            <p>Support teams spending 70%+ of their time answering the same repetitive questions — leading to slow response times, agent burnout, and frustrated customers waiting hours for simple answers.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>The Solution</h2>
+            <p>A Retrieval-Augmented Generation (RAG) system built with Flowise and orchestrated by n8n. It ingests your knowledge base into a vector database, then automatically answers incoming support questions with high accuracy. Low-confidence answers are instantly escalated to human agents with full context.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Key Results</h2>
+            <div class="results-grid">
+                <div class="result-item"><div class="result-num">90%+</div><div class="result-lbl">Answer Accuracy</div></div><div class="result-item"><div class="result-num">70%</div><div class="result-lbl">Tickets Auto-Resolved</div></div><div class="result-item"><div class="result-num">Instant</div><div class="result-lbl">Response Time</div></div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>How It Works</h2>
+            <ul class="steps-list">
+                <li><div class="step-num">1</div><span>Knowledge base ingestion into vector database</span></li><li><div class="step-num">2</div><span>Incoming question processing and semantic search</span></li><li><div class="step-num">3</div><span>LLM answer generation from relevant context</span></li><li><div class="step-num">4</div><span>Confidence scoring for each response</span></li><li><div class="step-num">5</div><span>Auto-escalation to human agents when confidence is low</span></li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h2>Technology Stack</h2>
+            <div class="stack-grid">
+                <div class="stack-item"><span class="stack-dot"></span>Flowise for RAG pipeline construction</div><div class="stack-item"><span class="stack-dot"></span>n8n for orchestration and routing</div><div class="stack-item"><span class="stack-dot"></span>Vector database (Pinecone / Weaviate) for knowledge storage</div><div class="stack-item"><span class="stack-dot"></span>OpenAI / Groq for answer generation</div><div class="stack-item"><span class="stack-dot"></span>Confidence threshold logic for human handoff</div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>What You Get</h2>
+            <ul>
+                <li><strong>Fully functional n8n workflow</strong> ready to deploy in your environment</li>
+                <li><strong>Complete documentation</strong> — setup guide, configuration, and maintenance notes</li>
+                <li><strong>Training session</strong> — walkthrough of the entire system with your team</li>
+                <li><strong>30 days of optimization support</strong> after delivery</li>
+                <li><strong>Full code ownership</strong> — no lock-in, no recurring fees</li>
+            </ul>
+        </div>
+
+        <div class="cta-box">
+            <h2>Interested in This System?</h2>
+            <p>This can be customized for your specific workflow and tools. Setup time: 5–10 days. Includes full documentation and training.</p>
+            <div class="cta-btns">
+                <a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20AI%20Customer%20Support%20(RAG)" target="_blank" class="cta-wa">💬 Book a Call on WhatsApp</a>
+                <a href="mailto:hks.automations@gmail.com?subject=Inquiry about AI Customer Support (RAG)" class="cta-em">✉️ Send an Email</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p class="footer-text">
+        © 2026 HKS Automations · Harvish Shah ·
+        <a href="../index.html">Back to Portfolio</a> ·
+        <a href="https://wa.me/919925798962" target="_blank">WhatsApp</a> ·
+        <a href="mailto:hks.automations@gmail.com">Email</a>
+    </p>
+</footer>
+</body>
+</html>
