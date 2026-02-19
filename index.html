@@ -720,12 +720,14 @@
                 <div class="proj-thumb" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);">📄<div class="proj-thumb-overlay">VIEW DETAILS</div></div>
                 <div class="proj-body">
                     <div class="proj-num">PROJECT 02</div>
-                    <div class="proj-title">Mass-Scale AI Content Engines</div>
-                    <p class="proj-desc">Architected autonomous systems for bulk 10k+ EdTech worksheet generation and a fully automated Instagram engine that researches, creates, and schedules posts.</p>
+                    <div class="proj-title">AI Content Automation Platform</div>
+                    <p class="proj-desc">Centralized AI engine generating structured educational content and fully automated Instagram posts at scale. Designed for high-volume, scheduled, autonomous content production.</p>
                     <div class="proj-tags">
                         <span class="ptag">n8n</span>
                         <span class="ptag">OpenAI GPT-4</span>
                         <span class="ptag">Flowise</span>
+                        <span class="ptag">Instagram API</span>
+                        <span class="ptag">Prompt Engineering</span>
                         <span class="ptag">Bulk Processing</span>
                     </div>
                 </div>
@@ -1000,17 +1002,339 @@
 
 <!-- MODALS -->
 <!-- <div class="modal-bg" id="m1" onclick="bgClose(event,'m1')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m1')">✕</button><div class="modal-num">PROJECT 01</div><h2>Enterprise Enquiry Tracking System</h2><h3>Challenge</h3><p>Sales pipeline data was trapped in unstructured emails and manual Excel logs, causing visibility gaps and delayed responses to high-value enquiries.</p><h3>Solution</h3><p>Architected an n8n workflow that parses incoming emails via IMAP, extracts key data points using Regex and LLMs, then automatically structures the data into a SQL database — creating a real-time pipeline dashboard accessible to the whole team.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">40%</div><div class="mr-lbl">Processing Time Reduced</div></div><div class="mr-item"><div class="mr-num">0</div><div class="mr-lbl">Manual Data Entry</div></div><div class="mr-item"><div class="mr-num">100%</div><div class="mr-lbl">Pipeline Visibility</div></div></div><h3>Tech Stack</h3><ul><li>n8n for workflow orchestration</li><li>IMAP for email parsing</li><li>LLM for intelligent data extraction</li><li>SQL database for structured storage</li><li>Webhooks and JSON transforms</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20a%20similar%20system%20to%20your%20Enterprise%20Enquiry%20Tracking%20project." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in Enterprise Enquiry Tracking System" class="modal-cta-em">✉️ Send an Email</a></div></div></div> -->
-<div class="modal-bg" id="m1" onclick="bgClose(event,'m1')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m1')">✕</button><div class="modal-num">PROJECT 01</div><h2>WhatsApp & Telegram Agent Desk</h2><h3>The Challenge</h3><p>Inbound lead management was fragmented across multiple chat platforms, leading to inconsistent response times and lost data. The client needed a way to automate qualification while allowing humans to jump in for high-value closing.</p><h3>The Solution</h3><p>I built a unified conversational "desk" using n8n and Flowise. The system uses a state-machine logic to track user intent across WhatsApp and Telegram. It provides RAG-based support from internal documentation and features a "Smart Pause" mechanism—detecting when a human intervenes and pausing the AI instantly to prevent overlapping responses.</p><div class="modal-results"><div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Lead Qualification</div></div><div class="mr-item"><div class="mr-num">0s</div><div class="mr-lbl">Initial Response Time</div></div><div class="mr-item"><div class="mr-num">Hybrid</div><div class="mr-lbl">AI + Human Takeover</div></div></div><h3>Tech Stack</h3><ul><li>n8n Orchestration (State-based logic)</li><li>WhatsApp Business & Telegram Bot APIs</li><li>Flowise & Vector DB (Knowledge Base)</li><li>Slack API (Human Agent Notifications)</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20want%20to%20discuss%20an%20AI%20Agent%20Desk%20like%20your%20Project%2001." target="_blank" class="modal-cta-wa">💬 Build Your Agent Desk</a></div></div></div>
+<!--<div class="modal-bg" id="m1" onclick="bgClose(event,'m1')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m1')">✕</button><div class="modal-num">PROJECT 01</div><h2>WhatsApp & Telegram Agent Desk</h2><h3>The Challenge</h3><p>Inbound lead management was fragmented across multiple chat platforms, leading to inconsistent response times and lost data. The client needed a way to automate qualification while allowing humans to jump in for high-value closing.</p><h3>The Solution</h3><p>I built a unified conversational "desk" using n8n and Flowise. The system uses a state-machine logic to track user intent across WhatsApp and Telegram. It provides RAG-based support from internal documentation and features a "Smart Pause" mechanism—detecting when a human intervenes and pausing the AI instantly to prevent overlapping responses.</p><div class="modal-results"><div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Lead Qualification</div></div><div class="mr-item"><div class="mr-num">0s</div><div class="mr-lbl">Initial Response Time</div></div><div class="mr-item"><div class="mr-num">Hybrid</div><div class="mr-lbl">AI + Human Takeover</div></div></div><h3>Tech Stack</h3><ul><li>n8n Orchestration (State-based logic)</li><li>WhatsApp Business & Telegram Bot APIs</li><li>Flowise & Vector DB (Knowledge Base)</li><li>Slack API (Human Agent Notifications)</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20want%20to%20discuss%20an%20AI%20Agent%20Desk%20like%20your%20Project%2001." target="_blank" class="modal-cta-wa">💬 Build Your Agent Desk</a></div></div></div>
+<!-- MODAL PROJECT 1 -->
+<div class="modal-bg" id="m1" onclick="bgClose(event,'m1')">
+  <div class="modal-box">
 
-<div class="modal-bg" id="m2" onclick="bgClose(event,'m2')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m2')">✕</button><div class="modal-num">PROJECT 02</div><h2>AI Content Generator (EdTech)</h2><h3>Challenge</h3><p>An EdTech client needed to generate 10,000+ unique, age-specific educational worksheets at scale — completely impossible to do manually with consistent quality and variety.</p><h3>Solution</h3><p>Built a looping workflow in n8n integrated with OpenAI GPT-4. Implemented dynamic prompt engineering to vary difficulty levels across ages 2–8, with automatic rate limiting, error handling, and bulk processing to handle high-volume generation reliably.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">10k+</div><div class="mr-lbl">Worksheets Generated</div></div><div class="mr-item"><div class="mr-num">6</div><div class="mr-lbl">Age Groups Covered</div></div><div class="mr-item"><div class="mr-num">0</div><div class="mr-lbl">Manual Errors</div></div></div><h3>Tech Stack</h3><ul><li>n8n looping workflows</li><li>OpenAI GPT-4 API</li><li>Flowise for agent logic</li><li>Dynamic prompt engineering</li><li>Bulk processing with rate limiting and error handling</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20the%20AI%20Content%20Generator%20system." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in AI Content Generator" class="modal-cta-em">✉️ Send an Email</a></div></div></div>
+    <button class="modal-close-btn" onclick="closeM('m1')">✕</button>
 
-<div class="modal-bg" id="m3" onclick="bgClose(event,'m3')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m3')">✕</button><div class="modal-num">PROJECT 03</div><h2>Lead Enrichment &amp; Outreach Pipeline</h2><h3>Challenge</h3><p>Cold outreach required gathering data from multiple fragmented sources manually — consuming hours of sales team time and producing inconsistent, generic messages.</p><h3>Solution</h3><p>Developed an agentic workflow that automatically scrapes target profiles, enriches data via Clearbit and Apollo APIs, and generates highly personalized outreach messages using Claude 3 — based on company context, role, and recent signals.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">3×</div><div class="mr-lbl">Faster Lead Processing</div></div><div class="mr-item"><div class="mr-num">50%</div><div class="mr-lbl">Higher Response Rate</div></div><div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Automated Operation</div></div></div><h3>Tech Stack</h3><ul><li>n8n agentic workflows</li><li>HTTP Requests for API calls</li><li>Clearbit and Apollo APIs for enrichment</li><li>Claude 3 for personalized copy generation</li><li>JSON parsing and data transformation</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20a%20Lead%20Enrichment%20Pipeline." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in Lead Enrichment Pipeline" class="modal-cta-em">✉️ Send an Email</a></div></div></div>
+    <div class="modal-num">PROJECT 01</div>
+    <h2>WhatsApp & Telegram AI Agent Desk</h2>
 
-<div class="modal-bg" id="m4" onclick="bgClose(event,'m4')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m4')">✕</button><div class="modal-num">PROJECT 04</div><h2>AI Customer Support RAG System</h2><h3>Challenge</h3><p>Support teams spending the majority of their time answering the same repetitive questions, leading to slow response times, agent burnout, and customer frustration.</p><h3>Solution</h3><p>Built a RAG-based customer support system using Flowise and n8n that automatically answers questions from the company knowledge base. Includes confidence scoring — low-confidence answers are immediately escalated to human agents with full context.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">90%+</div><div class="mr-lbl">Answer Accuracy</div></div><div class="mr-item"><div class="mr-num">70%</div><div class="mr-lbl">Tickets Auto-Resolved</div></div><div class="mr-item"><div class="mr-num">Instant</div><div class="mr-lbl">Response Time</div></div></div><h3>Tech Stack</h3><ul><li>Flowise for RAG pipeline</li><li>n8n for orchestration and routing</li><li>Vector database for knowledge base storage</li><li>Confidence scoring for smart human handoff</li><li>OpenAI / Groq LLM integration</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20an%20AI%20Customer%20Support%20RAG%20system." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in AI Customer Support RAG System" class="modal-cta-em">✉️ Send an Email</a></div></div></div>
+    <h3>Challenge</h3>
+    <p>
+      Businesses required a unified conversational AI system to manage high volumes of inbound WhatsApp and Telegram queries while maintaining qualification accuracy, routing logic, and seamless handover to human agents. Manual handling created delays, inconsistent responses, and limited scalability.
+    </p>
 
-<div class="modal-bg" id="m5" onclick="bgClose(event,'m5')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m5')">✕</button><div class="modal-num">PROJECT 05</div><h2>Autonomous AI Inbox Operations</h2><h3>Challenge</h3><p>A high-volume service team was losing 10+ hours a week per person to manual email triaging—identifying urgent requests, updating CRM records, and drafting basic follow-ups.</p><h3>Solution</h3><p>I architected an intelligent layer on top of the Gmail API using n8n and Groq LLMs. The system classifies intent and sentiment with 90%+ accuracy. Instead of just labeling, it triggers downstream actions: creating Notion tasks for urgent leads, updating HubSpot CRM, and drafting contextual replies in the user's Drafts folder for final review.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">80%</div><div class="mr-lbl">Inbox Time Saved</div></div><div class="mr-item"><div class="mr-num">Instant</div><div class="mr-lbl">CRM Synchronization</div></div><div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Automated Sorting</div></div></div><h3>Tech Stack</h3><ul><li>n8n for orchestration</li><li>Gmail API (OAuth2 Integration)</li><li>Groq LLM for intelligent classification</li><li>Priority scoring logic</li><li>Notion & HubSpot CRM Sync</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20the%20Gmail%20AI%20Organizer." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in Gmail AI Organizer" class="modal-cta-em">✉️ Send an Email</a></div></div></div>
+    <h3>Solution</h3>
+    <p>
+      Designed and deployed an AI-driven conversational agent built using n8n workflows integrated with OpenAI GPT-4. Implemented intelligent routing logic, automated lead qualification, webhook integrations, CRM data logging, and fallback human escalation flows. System supports multi-channel messaging with structured conversation tracking 
+      and analytics.
+    </p>
 
-<div class="modal-bg" id="m6" onclick="bgClose(event,'m6')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m6')">✕</button><div class="modal-num">PROJECT 06</div><h2>Appointment &amp; Follow-Up Automation</h2><h3>Challenge</h3><p>Service businesses losing revenue from missed follow-ups, high no-show rates due to lack of reminders, and staff time consumed by manual scheduling and confirmation calls.</p><h3>Solution</h3><p>Complete appointment lifecycle automation — from initial booking confirmation through WhatsApp reminders, rescheduling logic, post-appointment follow-ups, and review requests. Runs 24/7 without any human intervention.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">60%</div><div class="mr-lbl">Fewer No-Shows</div></div><div class="mr-item"><div class="mr-num">100%</div><div class="mr-lbl">Follow-Up Rate</div></div><div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Booking Available</div></div></div><h3>Tech Stack</h3><ul><li>n8n for workflow orchestration</li><li>WhatsApp API for messaging</li><li>CRM integration for customer data</li><li>Calendar API for scheduling</li><li>Intelligent rescheduling and conflict resolution logic</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20Appointment%20and%20Follow-Up%20Automation." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in Appointment Follow-Up Automation" class="modal-cta-em">✉️ Send an Email</a></div></div></div>
+    <h3>Key Results</h3>
+    <div class="modal-results">
+      <div class="mr-item">
+        <div class="mr-num">24/7</div>
+        <div class="mr-lbl">Automated Query Handling</div>
+      </div>
+      <div class="mr-item">
+        <div class="mr-num">70%+</div>
+        <div class="mr-lbl">Reduction in Manual Routing</div>
+      </div>
+      <div class="mr-item">
+        <div class="mr-num">2x</div>
+        <div class="mr-lbl">Lead Qualification Speed</div>
+      </div>
+    </div>
+
+    <h3>Tech Stack</h3>
+    <ul>
+      <li>n8n Workflow Automation</li>
+      <li>OpenAI GPT-4 API</li>
+      <li>WhatsApp Business API</li>
+      <li>Telegram Bot API</li>
+      <li>Webhook-based CRM integration</li>
+      <li>Conversation state management & fallback handling</li>
+    </ul>
+
+    <div class="modal-cta">
+      <a href="mailto:hks.automations@gmail.com?subject=Interested in WhatsApp & Telegram AI Agent Desk" class="modal-cta-em">
+        ✉️ Send an Email
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+    
+<!-- <div class="modal-bg" id="m2" onclick="bgClose(event,'m2')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m2')">✕</button><div class="modal-num">PROJECT 02</div><h2>AI Content Generator (EdTech)</h2><h3>Challenge</h3><p>An EdTech client needed to generate 10,000+ unique, age-specific educational worksheets at scale — completely impossible to do manually with consistent quality and variety.</p><h3>Solution</h3><p>Built a looping workflow in n8n integrated with OpenAI GPT-4. Implemented dynamic prompt engineering to vary difficulty levels across ages 2–8, with automatic rate limiting, error handling, and bulk processing to handle high-volume generation reliably.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">10k+</div><div class="mr-lbl">Worksheets Generated</div></div><div class="mr-item"><div class="mr-num">6</div><div class="mr-lbl">Age Groups Covered</div></div><div class="mr-item"><div class="mr-num">0</div><div class="mr-lbl">Manual Errors</div></div></div><h3>Tech Stack</h3><ul><li>n8n looping workflows</li><li>OpenAI GPT-4 API</li><li>Flowise for agent logic</li><li>Dynamic prompt engineering</li><li>Bulk processing with rate limiting and error handling</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20the%20AI%20Content%20Generator%20system." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in AI Content Generator" class="modal-cta-em">✉️ Send an Email</a></div></div></div> -->
+    <div class="modal-bg" id="m2" onclick="bgClose(event,'m2')">
+  <div class="modal-box">
+
+    <button class="modal-close-btn" onclick="closeM('m2')">✕</button>
+
+    <div class="modal-num">PROJECT 02</div>
+    <h2>Central AI Content Automation Engine</h2>
+
+    <h3>Challenge</h3>
+    <p>
+      Businesses required large-scale, consistent content generation across multiple formats — including structured educational worksheets and daily social media posts — without increasing operational headcount. Manual creation was slow, inconsistent, and not scalable.
+    </p>
+
+    <h3>Solution</h3>
+    <p>
+      Designed and deployed a centralized AI content automation engine using n8n, OpenAI GPT-4, and workflow orchestration systems. The platform dynamically generates structured educational content as well as fully automated Instagram posts based on predefined schedules, themes, and content strategies.
+    </p>
+
+    <p>
+      Implemented bulk processing logic, dynamic prompt frameworks, structured output validation, rate limiting, and auto-scheduling pipelines for reliable, high-volume content delivery.</p>
+
+    <h3>Use Cases Delivered</h3>
+    <ul>
+      <li>10,000+ age-specific educational worksheets generated at scale</li>
+      <li>Automated Instagram content creation & daily scheduled posting</li>
+      <li>Dynamic difficulty & tone adjustment using AI prompt engineering</li>
+      <li>Fully autonomous content loop from generation to publishing</li>
+    </ul>
+
+    <h3>Key Results</h3>
+    <div class="modal-results">
+      <div class="mr-item">
+        <div class="mr-num">10k+</div>
+        <div class="mr-lbl">Worksheets Generated</div>
+      </div>
+      <div class="mr-item">
+        <div class="mr-num">Daily</div>
+        <div class="mr-lbl">Auto Instagram Posts</div>
+      </div>
+      <div class="mr-item">
+        <div class="mr-num">100%</div>
+        <div class="mr-lbl">Automated Workflow</div>
+      </div>
+    </div>
+
+    <h3>Architecture & Tech Stack</h3>
+    <ul>
+      <li>n8n workflow orchestration</li>
+      <li>OpenAI GPT-4 API</li>
+      <li>Flowise (agent orchestration)</li>
+      <li>Dynamic prompt engineering frameworks</li>
+      <li>Bulk processing & rate limiting logic</li>
+      <li>Instagram API integration for scheduled publishing</li>
+    </ul>
+
+    <div class="modal-cta">
+      <a href="mailto:hks.automations@gmail.com?subject=Interested in AI Content Automation Engine" class="modal-cta-em">
+        ✉️ Discuss This System
+      </a>
+    </div>
+
+  </div>
+</div>
+
+
+<!--<div class="modal-bg" id="m3" onclick="bgClose(event,'m3')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m3')">✕</button><div class="modal-num">PROJECT 03</div><h2>Lead Enrichment &amp; Outreach Pipeline</h2><h3>Challenge</h3><p>Cold outreach required gathering data from multiple fragmented sources manually — consuming hours of sales team time and producing inconsistent, generic messages.</p><h3>Solution</h3><p>Developed an agentic workflow that automatically scrapes target profiles, enriches data via Clearbit and Apollo APIs, and generates highly personalized outreach messages using Claude 3 — based on company context, role, and recent signals.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">3×</div><div class="mr-lbl">Faster Lead Processing</div></div><div class="mr-item"><div class="mr-num">50%</div><div class="mr-lbl">Higher Response Rate</div></div><div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Automated Operation</div></div></div><h3>Tech Stack</h3><ul><li>n8n agentic workflows</li><li>HTTP Requests for API calls</li><li>Clearbit and Apollo APIs for enrichment</li><li>Claude 3 for personalized copy generation</li><li>JSON parsing and data transformation</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20a%20Lead%20Enrichment%20Pipeline." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in Lead Enrichment Pipeline" class="modal-cta-em">✉️ Send an Email</a></div></div></div> -->
+    <div class="modal-bg" id="m3" onclick="bgClose(event,'m3')">
+  <div class="modal-box">
+    <button class="modal-close-btn" onclick="closeM('m3')">✕</button>
+
+    <div class="modal-num">PROJECT 03</div>
+    <h2>Lead Enrichment & Outreach Pipeline</h2>
+
+    <h3>Challenge</h3>
+    <p>
+      Sales teams required a scalable system to identify, enrich, and personalize outreach to high-value prospects. Manual prospecting was time-consuming and inconsistent, limiting campaign scale and response quality.
+    </p>
+
+    <h3>Solution</h3>
+    <p>
+      Designed an automated lead enrichment workflow using n8n integrated with Apollo and Clearbit APIs. Implemented AI-powered personalization using Claude 3 to generate context-aware outreach messages. Built structured sequencing logic for multi-touch campaigns with CRM integration and response tracking.
+    </p>
+
+    <h3>Key Results</h3>
+    <div class="modal-results">
+      <div class="mr-item">
+        <div class="mr-num">3x</div>
+        <div class="mr-lbl">Prospecting Speed</div>
+      </div>
+      <div class="mr-item">
+        <div class="mr-num">50%+</div>
+        <div class="mr-lbl">Response Rate Improvement</div>
+      </div>
+      <div class="mr-item">
+        <div class="mr-num">100%</div>
+        <div class="mr-lbl">Automated Enrichment</div>
+      </div>
+    </div>
+
+    <h3>Tech Stack</h3>
+    <ul>
+      <li>n8n automation workflows</li>
+      <li>Apollo & Clearbit APIs</li>
+      <li>Claude 3 for AI personalization</li>
+      <li>CRM integration via webhooks</li>
+      <li>Sequenced multi-touch outreach logic</li>
+    </ul>
+
+    <div class="modal-cta">
+      <a href="mailto:hks.automations@gmail.com?subject=Interested in Lead Enrichment Pipeline" class="modal-cta-em">
+        ✉️ Send an Email
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="modal-bg" id="m4" onclick="bgClose(event,'m4')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m4')">✕</button><div class="modal-num">PROJECT 04</div><h2>AI Customer Support RAG System</h2><h3>Challenge</h3><p>Support teams spending the majority of their time answering the same repetitive questions, leading to slow response times, agent burnout, and customer frustration.</p><h3>Solution</h3><p>Built a RAG-based customer support system using Flowise and n8n that automatically answers questions from the company knowledge base. Includes confidence scoring — low-confidence answers are immediately escalated to human agents with full context.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">90%+</div><div class="mr-lbl">Answer Accuracy</div></div><div class="mr-item"><div class="mr-num">70%</div><div class="mr-lbl">Tickets Auto-Resolved</div></div><div class="mr-item"><div class="mr-num">Instant</div><div class="mr-lbl">Response Time</div></div></div><h3>Tech Stack</h3><ul><li>Flowise for RAG pipeline</li><li>n8n for orchestration and routing</li><li>Vector database for knowledge base storage</li><li>Confidence scoring for smart human handoff</li><li>OpenAI / Groq LLM integration</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20an%20AI%20Customer%20Support%20RAG%20system." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in AI Customer Support RAG System" class="modal-cta-em">✉️ Send an Email</a></div></div></div> -->
+    <div class="modal-bg" id="m4" onclick="bgClose(event,'m4')">
+  <div class="modal-box">
+    <button class="modal-close-btn" onclick="closeM('m4')">✕</button>
+
+    <div class="modal-num">PROJECT 04</div>
+    <h2>AI Customer Support RAG System</h2>
+
+    <h3>Challenge</h3>
+    <p>
+      Customer support teams required faster resolution times and accurate answers from large knowledge bases. Manual knowledge lookup resulted in inconsistent responses and delayed escalation handling.
+    </p>
+
+    <h3>Solution</h3>
+    <p>
+      Developed a Retrieval-Augmented Generation (RAG) system using Flowise and n8n. Implemented vector-based search to retrieve relevant documentation before passing context to the LLM for grounded responses. Integrated automated escalation logic for low-confidence answers.
+    </p>
+
+    <h3>Key Results</h3>
+    <div class="modal-results">
+      <div class="mr-item">
+        <div class="mr-num">90%+</div>
+        <div class="mr-lbl">Response Accuracy</div>
+      </div>
+      <div class="mr-item">
+        <div class="mr-num">60%</div>
+        <div class="mr-lbl">Faster Resolution</div>
+      </div>
+      <div class="mr-item">
+        <div class="mr-num">24/7</div>
+        <div class="mr-lbl">Automated Availability</div>
+      </div>
+    </div>
+
+    <h3>Tech Stack</h3>
+    <ul>
+      <li>Flowise for RAG orchestration</li>
+      <li>Vector database (embedding storage)</li>
+      <li>n8n workflow automation</li>
+      <li>OpenAI API integration</li>
+      <li>Confidence scoring & escalation logic</li>
+    </ul>
+
+    <div class="modal-cta">
+      <a href="mailto:hks.automations@gmail.com?subject=Interested in AI Customer Support RAG System" class="modal-cta-em">
+        ✉️ Send an Email
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="modal-bg" id="m5" onclick="bgClose(event,'m5')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m5')">✕</button><div class="modal-num">PROJECT 05</div><h2>Autonomous AI Inbox Operations</h2><h3>Challenge</h3><p>A high-volume service team was losing 10+ hours a week per person to manual email triaging—identifying urgent requests, updating CRM records, and drafting basic follow-ups.</p><h3>Solution</h3><p>I architected an intelligent layer on top of the Gmail API using n8n and Groq LLMs. The system classifies intent and sentiment with 90%+ accuracy. Instead of just labeling, it triggers downstream actions: creating Notion tasks for urgent leads, updating HubSpot CRM, and drafting contextual replies in the user's Drafts folder for final review.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">80%</div><div class="mr-lbl">Inbox Time Saved</div></div><div class="mr-item"><div class="mr-num">Instant</div><div class="mr-lbl">CRM Synchronization</div></div><div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Automated Sorting</div></div></div><h3>Tech Stack</h3><ul><li>n8n for orchestration</li><li>Gmail API (OAuth2 Integration)</li><li>Groq LLM for intelligent classification</li><li>Priority scoring logic</li><li>Notion & HubSpot CRM Sync</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20the%20Gmail%20AI%20Organizer." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in Gmail AI Organizer" class="modal-cta-em">✉️ Send an Email</a></div></div></div> -->
+    <div class="modal-bg" id="m5" onclick="bgClose(event,'m5')">
+  <div class="modal-box">
+    <button class="modal-close-btn" onclick="closeM('m5')">✕</button>
+
+    <div class="modal-num">PROJECT 05</div>
+    <h2>Autonomous AI Inbox Operations</h2>
+
+    <h3>Challenge</h3>
+    <p>
+      High-volume email environments required automated categorization, prioritization, and structured handling. Manual inbox management reduced productivity and delayed high-priority responses.
+    </p>
+
+    <h3>Solution</h3>
+    <p>
+      Designed an AI-driven email classification system using n8n and Gmail API. Integrated Groq LLM for rapid categorization and label assignment. Implemented rule-based routing and auto-response workflows for operational efficiency.
+    </p>
+
+    <h3>Key Results</h3>
+    <div class="modal-results">
+      <div class="mr-item">
+        <div class="mr-num">80%</div>
+        <div class="mr-lbl">Inbox Time Reduction</div>
+      </div>
+      <div class="mr-item">
+        <div class="mr-num">95%</div>
+        <div class="mr-lbl">Accurate Classification</div>
+      </div>
+      <div class="mr-item">
+        <div class="mr-num">100%</div>
+        <div class="mr-lbl">Automated Labeling</div>
+      </div>
+    </div>
+
+    <h3>Tech Stack</h3>
+    <ul>
+      <li>n8n workflow automation</li>
+      <li>Gmail API integration</li>
+      <li>Groq LLM classification</li>
+      <li>Rule-based routing logic</li>
+      <li>Auto-reply workflows</li>
+    </ul>
+
+    <div class="modal-cta">
+      <a href="mailto:hks.automations@gmail.com?subject=Interested in AI Inbox Automation" class="modal-cta-em">
+        ✉️ Send an Email
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="modal-bg" id="m6" onclick="bgClose(event,'m6')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m6')">✕</button><div class="modal-num">PROJECT 06</div><h2>Appointment &amp; Follow-Up Automation</h2><h3>Challenge</h3><p>Service businesses losing revenue from missed follow-ups, high no-show rates due to lack of reminders, and staff time consumed by manual scheduling and confirmation calls.</p><h3>Solution</h3><p>Complete appointment lifecycle automation — from initial booking confirmation through WhatsApp reminders, rescheduling logic, post-appointment follow-ups, and review requests. Runs 24/7 without any human intervention.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">60%</div><div class="mr-lbl">Fewer No-Shows</div></div><div class="mr-item"><div class="mr-num">100%</div><div class="mr-lbl">Follow-Up Rate</div></div><div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Booking Available</div></div></div><h3>Tech Stack</h3><ul><li>n8n for workflow orchestration</li><li>WhatsApp API for messaging</li><li>CRM integration for customer data</li><li>Calendar API for scheduling</li><li>Intelligent rescheduling and conflict resolution logic</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20Appointment%20and%20Follow-Up%20Automation." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in Appointment Follow-Up Automation" class="modal-cta-em">✉️ Send an Email</a></div></div></div> -->
+    <div class="modal-bg" id="m6" onclick="bgClose(event,'m6')">
+  <div class="modal-box">
+    <button class="modal-close-btn" onclick="closeM('m6')">✕</button>
+
+    <div class="modal-num">PROJECT 06</div>
+    <h2>Appointment & Follow-Up Automation</h2>
+
+    <h3>Challenge</h3>
+    <p>
+      Businesses required structured appointment scheduling with automated reminders, rescheduling logic, and post-appointment follow-ups. Manual coordination led to missed appointments and inconsistent customer communication.
+    </p>
+
+    <h3>Solution</h3>
+    <p>
+      Built an automated scheduling system using n8n integrated with WhatsApp API, CRM, and Calendar APIs. Implemented reminder workflows, rescheduling logic, and automated follow-up messaging based on appointment outcomes.
+    </p>
+
+    <h3>Key Results</h3>
+    <div class="modal-results">
+      <div class="mr-item">
+        <div class="mr-num">40%</div>
+        <div class="mr-lbl">Reduction in No-Shows</div>
+      </div>
+      <div class="mr-item">
+        <div class="mr-num">100%</div>
+        <div class="mr-lbl">Automated Reminders</div>
+      </div>
+      <div class="mr-item">
+        <div class="mr-num">2x</div>
+        <div class="mr-lbl">Follow-Up Efficiency</div>
+      </div>
+    </div>
+
+    <h3>Tech Stack</h3>
+    <ul>
+      <li>n8n automation workflows</li>
+      <li>WhatsApp Business API</li>
+      <li>CRM integration</li>
+      <li>Calendar API integration</li>
+      <li>Automated reminder & follow-up logic</li>
+    </ul>
+
+    <div class="modal-cta">
+      <a href="mailto:hks.automations@gmail.com?subject=Interested in Appointment Automation" class="modal-cta-em">
+        ✉️ Send an Email
+      </a>
+    </div>
+  </div>
+</div>
+
 
 <script>
 function openModal(id) {
