@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HKS Automations — Production-Grade AI Automation</title>
-    <meta name="description" content="Production-grade AI automation systems built by an engineer with 14+ years enterprise experience at GEA & Siemens. n8n Level 2 Certified.">
+    <title>HKS Automations — AI Solutions for Business Growth</title>
+    <meta name="description" content="Production-grade AI automation systems tailored to generate leads, support customers, and scale operations.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
     <style>
@@ -446,6 +446,7 @@
             .projects-grid { grid-template-columns: repeat(2,1fr); }
             .certs-grid { grid-template-columns: repeat(2,1fr); }
             .stats-inner { grid-template-columns: repeat(3,1fr); }
+            .services-grid { grid-template-columns: repeat(2,1fr); }
         }
         @media (max-width: 768px) {
             nav { padding: 0 20px; }
@@ -462,11 +463,45 @@
             .container { padding: 0 24px; }
             .book-section { padding: 80px 24px; }
         }
+        
+        .comp-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+            max-width: 900px;
+        }
+        .comp-pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: rgba(15, 23, 42, 0.04);
+            border: 1.5px solid var(--border);
+            border-radius: 100px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--dark);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .comp-pill span { font-size: 18px; }
+        .comp-pill:hover {
+            background: var(--blue-pale);
+            border-color: var(--blue);
+            color: var(--blue);
+            transform: translateY(-2px);
+        }
+        .section-dark .comp-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
     </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
     <a href="#" class="nav-logo">HKS Automations</a>
     <div class="nav-links">
@@ -481,26 +516,25 @@
     </div>
 </nav>
 
-<!-- HERO -->
 <div style="max-width:1400px;margin:0 auto;">
 <div class="hero">
     <div>
         <div class="hero-badge"><span class="badge-dot"></span> Available for Projects</div>
-        <h1>Production-Grade <em>AI Automation</em> for Real Business</h1>
-        <p class="hero-desc">Transform fragmented manual tasks into autonomous production systems. 14+ years of industrial automation logic meets modern LLM orchestration.</p>
+        <h1>Stop Doing Manual Work.<br><em>Automate Your Business.</em></h1>
+        <p class="hero-desc">We build custom AI systems that generate leads, handle customer support, and streamline operations so you can focus on scaling revenue.</p>
         <div class="hero-actions">
-            <a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20visited%20HKS%20Automations%20and%20would%20like%20to%20book%20a%20free%20consultation." target="_blank" class="btn-wa">💬 Book a Call on WhatsApp</a>
+            <a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20visited%20HKS%20Automations%20and%20would%20like%20to%20book%20a%20free%20consultation." target="_blank" class="btn-wa">💬 Book a Free Discovery Call</a>
             <a href="mailto:hks.automations@gmail.com?subject=Project Inquiry" class="btn-email-hero">✉️ Send an Email</a>
-            <a href="#projects" class="btn-ghost">View Projects →</a>
+            <a href="#projects" class="btn-ghost">View Portfolio →</a>
         </div>
         <div class="hero-trust">
             <div class="trust-pill"><span>🏆</span> n8n Level 2 Certified</div>
-            <div class="trust-pill"><span>🏭</span> GEA &amp; Siemens Background</div>
+            <div class="trust-pill"><span>🏭</span> 14+ Years Operational Logic</div>
             <div class="trust-pill"><span>🌍</span> Available Globally</div>
         </div>
     </div>
     <div class="hero-card">
-        <div class="hc-label">ENGINEER CREDENTIALS</div>
+        <div class="hc-label">AUTOMATION CREDENTIALS</div>
         <div class="hc-stats">
             <div class="hc-stat"><div class="hc-stat-num">14+</div><div class="hc-stat-lbl">Years Enterprise Exp.</div></div>
             <div class="hc-stat"><div class="hc-stat-num">8+</div><div class="hc-stat-lbl">Production Systems</div></div>
@@ -522,7 +556,6 @@
 </div>
 </div>
 
-<!-- STATS BAR -->
 <div class="stats-bar">
     <div class="stats-inner">
         <div><div class="stat-num">14+</div><div class="stat-lbl">Years Enterprise Experience</div></div>
@@ -533,7 +566,6 @@
     </div>
 </div>
 
-<!-- WHY HKS -->
 <section class="section" id="why">
     <div class="container">
         <div class="s-head">
@@ -576,123 +608,65 @@
     </div>
 </section>
 
-<!-- SERVICES -->
-<!--<section class="section section-bg" id="services">
+<section class="section section-bg" id="services">
     <div class="container">
         <div class="s-head center">
-            <div class="s-tag">SERVICES</div>
-            <h2 class="s-title">What I Build For You</h2>
-            <p class="s-sub">End-to-end automation systems designed around your specific workflow — not generic templates.</p>
+            <div class="s-tag">CORE SERVICES</div>
+            <h2 class="s-title">Sellable AI Automation Packages</h2>
+            <p class="s-sub">Tailored business solutions designed to solve specific bottlenecks, completely replacing manual repetitive tasks.</p>
         </div>
         <div class="services-grid">
             <div class="svc-card">
                 <div class="svc-num">01</div>
-                <div class="svc-title">AI Lead Generation &amp; Outreach</div>
-                <p class="svc-desc">End-to-end pipeline that finds leads, qualifies them using AI, scores by conversion probability, and sends personalized outreach automatically. Integrates with your existing CRM.</p>
-                <div class="svc-tags"><span class="stag">n8n</span><span class="stag">Groq LLM</span><span class="stag">Gmail API</span><span class="stag">Google Sheets</span></div>
+                <div class="svc-title">🚀 AI Lead Generation Engine</div>
+                <p class="svc-desc">Automates cold outreach, scores prospects, and qualifies leads automatically to save hours of manual sales work.</p>
+                <div class="svc-tags">
+                    <span class="stag">Automated Data Extraction</span>
+                    <span class="stag">Multi-channel Outreach</span>
+                    <span class="stag">CRM Integration</span>
+                </div>
             </div>
             <div class="svc-card">
                 <div class="svc-num">02</div>
-                <div class="svc-title">AI Customer Support (RAG)</div>
-                <p class="svc-desc">RAG-based support system that answers questions from your knowledge base with 90%+ accuracy. Includes confidence scoring and intelligent escalation to human agents when needed.</p>
-                <div class="svc-tags"><span class="stag">RAG</span><span class="stag">Flowise</span><span class="stag">n8n</span><span class="stag">Vector DB</span></div>
+                <div class="svc-title">💬 24/7 Support & RAG Chatbots</div>
+                <p class="svc-desc">Provides instant, accurate customer replies using your proprietary business data to drastically reduce support ticket volume.</p>
+                <div class="svc-tags">
+                    <span class="stag">Trained on Internal Docs</span>
+                    <span class="stag">Human Handoff</span>
+                    <span class="stag">Telegram/Web/WhatsApp</span>
+                </div>
             </div>
             <div class="svc-card">
                 <div class="svc-num">03</div>
-                <div class="svc-title">Workflow Automation &amp; Integration</div>
-                <p class="svc-desc">Complex multi-step workflows connecting your CRM, ERP, email, Slack, and databases. Eliminate manual data entry and reduce processing time by up to 40%.</p>
-                <div class="svc-tags"><span class="stag">n8n</span><span class="stag">REST APIs</span><span class="stag">SQL</span><span class="stag">Webhooks</span></div>
+                <div class="svc-title">📅 Automated HR & Scheduling</div>
+                <p class="svc-desc">Streamlines the hiring pipeline by analyzing candidate resumes and booking interviews without human intervention.</p>
+                <div class="svc-tags">
+                    <span class="stag">AI Skill Gap Reporting</span>
+                    <span class="stag">Interview Scheduling</span>
+                    <span class="stag">Intelligent Follow-ups</span>
+                </div>
             </div>
             <div class="svc-card">
                 <div class="svc-num">04</div>
-                <div class="svc-title">n8n Consulting &amp; Implementation</div>
-                <p class="svc-desc">Hands-on n8n implementation for your team. From architecture design to deployment, training, and ongoing optimization — backed by Level 2 certified expertise.</p>
-                <div class="svc-tags"><span class="stag">n8n L2</span><span class="stag">Architecture</span><span class="stag">Training</span><span class="stag">Consulting</span></div>
-            </div>
-            <div class="svc-card">
-                <div class="svc-num">05</div>
-                <div class="svc-title">LLM-Powered AI Agents</div>
-                <p class="svc-desc">Custom AI agents that process documents, generate reports, answer internal queries, and automate decision-making — all with human-in-the-loop safeguards built in.</p>
-                <div class="svc-tags"><span class="stag">OpenAI</span><span class="stag">Claude</span><span class="stag">Flowise</span><span class="stag">Groq</span></div>
-            </div>
-            <div class="svc-card">
-                <div class="svc-num">06</div>
-                <div class="svc-title">Process Analysis &amp; Automation Roadmap</div>
-                <p class="svc-desc">Before building anything, I map your complete operational workflow, identify high-friction points, and deliver a prioritized automation roadmap with ROI estimates per initiative.</p>
-                <div class="svc-tags"><span class="stag">Process Mapping</span><span class="stag">ROI Analysis</span><span class="stag">Strategy</span></div>
+                <div class="svc-title">📊 Content & Research Automation</div>
+                <p class="svc-desc">Generates deep industry research reports and fully formatted content at scale to drive your inbound marketing.</p>
+                <div class="svc-tags">
+                    <span class="stag">Web Discovery Agents</span>
+                    <span class="stag">E-book Generation</span>
+                    <span class="stag">Search Optimization</span>
+                </div>
             </div>
         </div>
-    </div>
-</section> -->
-
-<section class="section section-bg" id="services">
-    <div class="container">
-        <div class="s-head">
-            <div class="s-tag">Expertise</div>
-            <h2 class="s-title">Core Competencies</h2>
-            <p class="s-sub">Enterprise-grade automation built on 14+ years of industrial system logic and modern AI orchestration.</p>
-        </div>
-
-        <div class="comp-wrapper">
+        
+        <div class="comp-wrapper" style="margin-top: 40px; justify-content: center; margin-left: auto; margin-right: auto;">
             <div class="comp-pill"><span>🤖</span> AI Consulting</div>
             <div class="comp-pill"><span>⚙️</span> Process Automation</div>
             <div class="comp-pill"><span>🔗</span> n8n Workflow Architecture</div>
             <div class="comp-pill"><span>🧠</span> LLM Implementation (RAG)</div>
-            
-            <div class="comp-pill"><span>📈</span> Product Strategy</div>
-            <div class="comp-pill"><span>☁️</span> SaaS Platforms</div>
-            <div class="comp-pill"><span>🤝</span> Cross-Functional Leadership</div>
-            <div class="comp-pill"><span>📊</span> ROI & Process Mapping</div>
-            
-            <div class="comp-pill"><span>🏭</span> Industrial Digital Transformation</div>
-            <div class="comp-pill"><span>🛡️</span> System Reliability & Logic</div>
-            <div class="comp-pill"><span>💻</span> API & SQL Integration</div>
-            <div class="comp-pill"><span>🔒</span> Private/Local Hosting</div>
         </div>
     </div>
 </section>
 
-<style>
-    .comp-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 30px;
-        max-width: 900px;
-    }
-    .comp-pill {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 12px 24px;
-        background: rgba(15, 23, 42, 0.04);
-        border: 1.5px solid var(--border);
-        border-radius: 100px;
-        font-family: 'DM Sans', sans-serif;
-        font-size: 15px;
-        font-weight: 600;
-        color: var(--dark);
-        transition: all 0.3s ease;
-        cursor: default;
-    }
-    .comp-pill span {
-        font-size: 18px;
-    }
-    .comp-pill:hover {
-        background: var(--blue-pale);
-        border-color: var(--blue);
-        color: var(--blue);
-        transform: translateY(-2px);
-    }
-    /* Dark mode adjustment for the "Expertise" section if needed */
-    .section-dark .comp-pill {
-        background: rgba(255, 255, 255, 0.05);
-        border-color: rgba(255, 255, 255, 0.1);
-        color: white;
-    }
-</style>    
-
-<!-- PROJECTS -->
 <section class="section" id="projects">
     <div class="container">
         <div class="s-head">
@@ -721,14 +695,12 @@
                 <div class="proj-body">
                     <div class="proj-num">PROJECT 02</div>
                     <div class="proj-title">AI Content Automation Platform</div>
-                    <p class="proj-desc">Centralized AI engine generating structured educational content and fully automated Instagram posts at scale. Designed for high-volume, scheduled, autonomous content production.</p>
+                    <p class="proj-desc">Centralized AI engine generating structured educational content and fully automated Instagram posts at scale. Designed for high-volume production.</p>
                     <div class="proj-tags">
                         <span class="ptag">n8n</span>
                         <span class="ptag">OpenAI GPT-4</span>
                         <span class="ptag">Flowise</span>
                         <span class="ptag">Instagram API</span>
-                        <span class="ptag">Prompt Engineering</span>
-                        <span class="ptag">Bulk Processing</span>
                     </div>
                 </div>
             </div>
@@ -796,7 +768,6 @@
     </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section class="section" id="experience" style="background:var(--dark-2);">
     <div class="container">
         <div class="s-head">
@@ -810,7 +781,7 @@
                 <div class="tl-year">2025 — PRESENT</div>
                 <div class="tl-title">Autonomous AI & Workflow Engineering</div>
                 <div class="tl-company">HKS Automations · Independent Practice</div>
-                <p class="tl-desc">Achieved n8n Level 2 Certification and now architecting production-grade AI automation systems for global clients — combining deep enterprise operations knowledge with cutting-edge LLM and workflow technology integrated with complex APIs .</p>
+                <p class="tl-desc">Achieved n8n Level 2 Certification and now architecting production-grade AI automation systems for global clients — combining deep enterprise operations knowledge with cutting-edge LLM and workflow technology integrated with complex APIs.</p>
                 <div class="tl-tags"><span class="tl-tag">n8n / make.com / Flowise</span><span class="tl-tag">LLM Agents</span><span class="tl-tag">RAG Systems</span><span class="tl-tag">API Integration</span></div>
             </div>
             <div class="tl-item">
@@ -833,7 +804,7 @@
                 <div class="tl-dot"></div>
                 <div class="tl-year">2010 — 2014</div>
                 <div class="tl-title">Global Systems Engineering & Technical Sales</div>
-                <div class="tl-company">International Projects · Colombia & India/div>
+                <div class="tl-company">International Projects · Colombia & India</div>
                 <p class="tl-desc">Designed I&C systems for water treatment plants, supported automation sales with Siemens/Rockwell templates, and completed an international engineering program in Colombia focused on ISA standards.</p>
                 <div class="tl-tags"><span class="tl-tag">I&C Systems</span><span class="tl-tag">ISA Standards</span><span class="tl-tag">Siemens/Rockwell</span><span class="tl-tag">International</span></div>
             </div>
@@ -841,7 +812,6 @@
     </div>
 </section>
 
-<!-- CERTIFICATIONS -->
 <section class="section section-bg" id="certs">
     <div class="container">
         <div class="s-head center">
@@ -871,7 +841,6 @@
     </div>
 </section>
 
-<!-- BOOK A CALL -->
 <div class="book-section">
     <h2>Ready to Automate Your Operations?</h2>
     <p>Book a free 30-minute consultation. I'll analyse your workflow, identify automation opportunities, and tell you exactly what's possible — no obligation.</p>
@@ -881,7 +850,6 @@
     </div>
 </div>
 
-<!-- CONTACT -->
 <section class="section" id="contact">
     <div class="container">
         <div class="s-head">
@@ -943,13 +911,11 @@
                     <div class="fg">
                         <label>Service Needed</label>
                         <select name="service">
-                            <option>Lead Generation Automation</option>
-                            <option>AI Customer Support (RAG)</option>
-                            <option>Workflow Automation &amp; Integration</option>
-                            <option>n8n Consulting &amp; Implementation</option>
-                            <option>LLM-Powered AI Agents</option>
-                            <option>Process Analysis &amp; Roadmap</option>
-                            <option>Whatsapp / Telegram AI Chatbot</option>
+                            <option>AI Lead Generation Engine</option>
+                            <option>24/7 Support & RAG Chatbots</option>
+                            <option>Automated HR & Scheduling</option>
+                            <option>Content & Research Automation</option>
+                            <option>Process Analysis & Roadmap</option>
                             <option>Other / Not Sure Yet</option>
                         </select>
                     </div>
@@ -961,7 +927,6 @@
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
     <div class="footer-top">
         <div>
@@ -979,10 +944,8 @@
             <h4>Services</h4>
             <a href="#services">Lead Generation</a>
             <a href="#services">AI Customer Support</a>
-            <a href="#services">Workflow Automation</a>
-            <a href="#services">n8n Consulting</a>
-            <a href="#services">LLM Agents</a>
-            <a href="#services">Process Analysis</a>
+            <a href="#services">Automated HR</a>
+            <a href="#services">Content Automation</a>
         </div>
         <div class="f-col">
             <h4>Quick Links</h4>
@@ -1000,341 +963,132 @@
     </div>
 </footer>
 
-<!-- MODALS -->
-<!-- <div class="modal-bg" id="m1" onclick="bgClose(event,'m1')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m1')">✕</button><div class="modal-num">PROJECT 01</div><h2>Enterprise Enquiry Tracking System</h2><h3>Challenge</h3><p>Sales pipeline data was trapped in unstructured emails and manual Excel logs, causing visibility gaps and delayed responses to high-value enquiries.</p><h3>Solution</h3><p>Architected an n8n workflow that parses incoming emails via IMAP, extracts key data points using Regex and LLMs, then automatically structures the data into a SQL database — creating a real-time pipeline dashboard accessible to the whole team.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">40%</div><div class="mr-lbl">Processing Time Reduced</div></div><div class="mr-item"><div class="mr-num">0</div><div class="mr-lbl">Manual Data Entry</div></div><div class="mr-item"><div class="mr-num">100%</div><div class="mr-lbl">Pipeline Visibility</div></div></div><h3>Tech Stack</h3><ul><li>n8n for workflow orchestration</li><li>IMAP for email parsing</li><li>LLM for intelligent data extraction</li><li>SQL database for structured storage</li><li>Webhooks and JSON transforms</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20a%20similar%20system%20to%20your%20Enterprise%20Enquiry%20Tracking%20project." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in Enterprise Enquiry Tracking System" class="modal-cta-em">✉️ Send an Email</a></div></div></div> -->
-<!--<div class="modal-bg" id="m1" onclick="bgClose(event,'m1')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m1')">✕</button><div class="modal-num">PROJECT 01</div><h2>WhatsApp & Telegram Agent Desk</h2><h3>The Challenge</h3><p>Inbound lead management was fragmented across multiple chat platforms, leading to inconsistent response times and lost data. The client needed a way to automate qualification while allowing humans to jump in for high-value closing.</p><h3>The Solution</h3><p>I built a unified conversational "desk" using n8n and Flowise. The system uses a state-machine logic to track user intent across WhatsApp and Telegram. It provides RAG-based support from internal documentation and features a "Smart Pause" mechanism—detecting when a human intervenes and pausing the AI instantly to prevent overlapping responses.</p><div class="modal-results"><div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Lead Qualification</div></div><div class="mr-item"><div class="mr-num">0s</div><div class="mr-lbl">Initial Response Time</div></div><div class="mr-item"><div class="mr-num">Hybrid</div><div class="mr-lbl">AI + Human Takeover</div></div></div><h3>Tech Stack</h3><ul><li>n8n Orchestration (State-based logic)</li><li>WhatsApp Business & Telegram Bot APIs</li><li>Flowise & Vector DB (Knowledge Base)</li><li>Slack API (Human Agent Notifications)</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20want%20to%20discuss%20an%20AI%20Agent%20Desk%20like%20your%20Project%2001." target="_blank" class="modal-cta-wa">💬 Build Your Agent Desk</a></div></div></div>
-<!-- MODAL PROJECT 1 -->
 <div class="modal-bg" id="m1" onclick="bgClose(event,'m1')">
   <div class="modal-box">
-
     <button class="modal-close-btn" onclick="closeM('m1')">✕</button>
-
     <div class="modal-num">PROJECT 01</div>
     <h2>WhatsApp & Telegram AI Agent Desk</h2>
-
     <h3>Challenge</h3>
-    <p>
-      Businesses required a unified conversational AI system to manage high volumes of inbound WhatsApp and Telegram queries while maintaining qualification accuracy, routing logic, and seamless handover to human agents. Manual handling created delays, inconsistent responses, and limited scalability.
-    </p>
-
+    <p>Businesses required a unified conversational AI system to manage high volumes of inbound WhatsApp and Telegram queries while maintaining qualification accuracy, routing logic, and seamless handover to human agents. Manual handling created delays, inconsistent responses, and limited scalability.</p>
     <h3>Solution</h3>
-    <p>
-      Designed and deployed an AI-driven conversational agent built using n8n workflows integrated with OpenAI GPT-4. Implemented intelligent routing logic, automated lead qualification, webhook integrations, CRM data logging, and fallback human escalation flows. System supports multi-channel messaging with structured conversation tracking 
-      and analytics.
-    </p>
-
+    <p>Designed and deployed an AI-driven conversational agent built using n8n workflows integrated with OpenAI GPT-4. Implemented intelligent routing logic, automated lead qualification, webhook integrations, CRM data logging, and fallback human escalation flows. System supports multi-channel messaging with structured conversation tracking and analytics.</p>
     <h3>Key Results</h3>
     <div class="modal-results">
-      <div class="mr-item">
-        <div class="mr-num">24/7</div>
-        <div class="mr-lbl">Automated Query Handling</div>
-      </div>
-      <div class="mr-item">
-        <div class="mr-num">70%+</div>
-        <div class="mr-lbl">Reduction in Manual Routing</div>
-      </div>
-      <div class="mr-item">
-        <div class="mr-num">2x</div>
-        <div class="mr-lbl">Lead Qualification Speed</div>
-      </div>
+      <div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Automated Query Handling</div></div>
+      <div class="mr-item"><div class="mr-num">70%+</div><div class="mr-lbl">Reduction in Manual Routing</div></div>
+      <div class="mr-item"><div class="mr-num">2x</div><div class="mr-lbl">Lead Qualification Speed</div></div>
     </div>
-
     <h3>Tech Stack</h3>
-    <ul>
-      <li>n8n Workflow Automation</li>
-      <li>OpenAI GPT-4 API</li>
-      <li>WhatsApp Business API</li>
-      <li>Telegram Bot API</li>
-      <li>Webhook-based CRM integration</li>
-      <li>Conversation state management & fallback handling</li>
-    </ul>
-
-    <div class="modal-cta">
-      <a href="mailto:hks.automations@gmail.com?subject=Interested in WhatsApp & Telegram AI Agent Desk" class="modal-cta-em">
-        ✉️ Send an Email
-      </a>
-    </div>
-
+    <ul><li>n8n Workflow Automation</li><li>OpenAI GPT-4 API</li><li>WhatsApp Business API</li><li>Telegram Bot API</li><li>Webhook-based CRM integration</li><li>Conversation state management & fallback handling</li></ul>
+    <div class="modal-cta"><a href="mailto:hks.automations@gmail.com?subject=Interested in WhatsApp & Telegram AI Agent Desk" class="modal-cta-em">✉️ Send an Email</a></div>
   </div>
 </div>
 
-
-
-
-    
-<!-- <div class="modal-bg" id="m2" onclick="bgClose(event,'m2')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m2')">✕</button><div class="modal-num">PROJECT 02</div><h2>AI Content Generator (EdTech)</h2><h3>Challenge</h3><p>An EdTech client needed to generate 10,000+ unique, age-specific educational worksheets at scale — completely impossible to do manually with consistent quality and variety.</p><h3>Solution</h3><p>Built a looping workflow in n8n integrated with OpenAI GPT-4. Implemented dynamic prompt engineering to vary difficulty levels across ages 2–8, with automatic rate limiting, error handling, and bulk processing to handle high-volume generation reliably.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">10k+</div><div class="mr-lbl">Worksheets Generated</div></div><div class="mr-item"><div class="mr-num">6</div><div class="mr-lbl">Age Groups Covered</div></div><div class="mr-item"><div class="mr-num">0</div><div class="mr-lbl">Manual Errors</div></div></div><h3>Tech Stack</h3><ul><li>n8n looping workflows</li><li>OpenAI GPT-4 API</li><li>Flowise for agent logic</li><li>Dynamic prompt engineering</li><li>Bulk processing with rate limiting and error handling</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20the%20AI%20Content%20Generator%20system." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in AI Content Generator" class="modal-cta-em">✉️ Send an Email</a></div></div></div> -->
-    <div class="modal-bg" id="m2" onclick="bgClose(event,'m2')">
+<div class="modal-bg" id="m2" onclick="bgClose(event,'m2')">
   <div class="modal-box">
-
     <button class="modal-close-btn" onclick="closeM('m2')">✕</button>
-
     <div class="modal-num">PROJECT 02</div>
     <h2>Central AI Content Automation Engine</h2>
-
     <h3>Challenge</h3>
-    <p>
-      Businesses required large-scale, consistent content generation across multiple formats — including structured educational worksheets and daily social media posts — without increasing operational headcount. Manual creation was slow, inconsistent, and not scalable.
-    </p>
-
+    <p>Businesses required large-scale, consistent content generation across multiple formats — including structured educational worksheets and daily social media posts — without increasing operational headcount. Manual creation was slow, inconsistent, and not scalable.</p>
     <h3>Solution</h3>
-    <p>
-      Designed and deployed a centralized AI content automation engine using n8n, OpenAI GPT-4, and workflow orchestration systems. The platform dynamically generates structured educational content as well as fully automated Instagram posts based on predefined schedules, themes, and content strategies.
-    </p>
-
-    <p>
-      Implemented bulk processing logic, dynamic prompt frameworks, structured output validation, rate limiting, and auto-scheduling pipelines for reliable, high-volume content delivery.</p>
-
-    <h3>Use Cases Delivered</h3>
-    <ul>
-      <li>10,000+ age-specific educational worksheets generated at scale</li>
-      <li>Automated Instagram content creation & daily scheduled posting</li>
-      <li>Dynamic difficulty & tone adjustment using AI prompt engineering</li>
-      <li>Fully autonomous content loop from generation to publishing</li>
-    </ul>
-
+    <p>Designed and deployed a centralized AI content automation engine using n8n, OpenAI GPT-4, and workflow orchestration systems. The platform dynamically generates structured educational content as well as fully automated Instagram posts based on predefined schedules, themes, and content strategies.</p>
+    <p>Implemented bulk processing logic, dynamic prompt frameworks, structured output validation, rate limiting, and auto-scheduling pipelines for reliable, high-volume content delivery.</p>
     <h3>Key Results</h3>
     <div class="modal-results">
-      <div class="mr-item">
-        <div class="mr-num">10k+</div>
-        <div class="mr-lbl">Worksheets Generated</div>
-      </div>
-      <div class="mr-item">
-        <div class="mr-num">Daily</div>
-        <div class="mr-lbl">Auto Instagram Posts</div>
-      </div>
-      <div class="mr-item">
-        <div class="mr-num">100%</div>
-        <div class="mr-lbl">Automated Workflow</div>
-      </div>
+      <div class="mr-item"><div class="mr-num">10k+</div><div class="mr-lbl">Worksheets Generated</div></div>
+      <div class="mr-item"><div class="mr-num">Daily</div><div class="mr-lbl">Auto Instagram Posts</div></div>
+      <div class="mr-item"><div class="mr-num">100%</div><div class="mr-lbl">Automated Workflow</div></div>
     </div>
-
-    <h3>Architecture & Tech Stack</h3>
-    <ul>
-      <li>n8n workflow orchestration</li>
-      <li>OpenAI GPT-4 API</li>
-      <li>Flowise (agent orchestration)</li>
-      <li>Dynamic prompt engineering frameworks</li>
-      <li>Bulk processing & rate limiting logic</li>
-      <li>Instagram API integration for scheduled publishing</li>
-    </ul>
-
-    <div class="modal-cta">
-      <a href="mailto:hks.automations@gmail.com?subject=Interested in AI Content Automation Engine" class="modal-cta-em">
-        ✉️ Discuss This System
-      </a>
-    </div>
-
+    <h3>Tech Stack</h3>
+    <ul><li>n8n workflow orchestration</li><li>OpenAI GPT-4 API</li><li>Flowise (agent orchestration)</li><li>Dynamic prompt engineering frameworks</li><li>Bulk processing & rate limiting logic</li><li>Instagram API integration</li></ul>
+    <div class="modal-cta"><a href="mailto:hks.automations@gmail.com?subject=Interested in AI Content Automation Engine" class="modal-cta-em">✉️ Discuss This System</a></div>
   </div>
 </div>
 
-
-<!--<div class="modal-bg" id="m3" onclick="bgClose(event,'m3')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m3')">✕</button><div class="modal-num">PROJECT 03</div><h2>Lead Enrichment &amp; Outreach Pipeline</h2><h3>Challenge</h3><p>Cold outreach required gathering data from multiple fragmented sources manually — consuming hours of sales team time and producing inconsistent, generic messages.</p><h3>Solution</h3><p>Developed an agentic workflow that automatically scrapes target profiles, enriches data via Clearbit and Apollo APIs, and generates highly personalized outreach messages using Claude 3 — based on company context, role, and recent signals.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">3×</div><div class="mr-lbl">Faster Lead Processing</div></div><div class="mr-item"><div class="mr-num">50%</div><div class="mr-lbl">Higher Response Rate</div></div><div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Automated Operation</div></div></div><h3>Tech Stack</h3><ul><li>n8n agentic workflows</li><li>HTTP Requests for API calls</li><li>Clearbit and Apollo APIs for enrichment</li><li>Claude 3 for personalized copy generation</li><li>JSON parsing and data transformation</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20a%20Lead%20Enrichment%20Pipeline." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in Lead Enrichment Pipeline" class="modal-cta-em">✉️ Send an Email</a></div></div></div> -->
-    <div class="modal-bg" id="m3" onclick="bgClose(event,'m3')">
+<div class="modal-bg" id="m3" onclick="bgClose(event,'m3')">
   <div class="modal-box">
     <button class="modal-close-btn" onclick="closeM('m3')">✕</button>
-
     <div class="modal-num">PROJECT 03</div>
     <h2>Lead Enrichment & Outreach Pipeline</h2>
-
     <h3>Challenge</h3>
-    <p>
-      Sales teams required a scalable system to identify, enrich, and personalize outreach to high-value prospects. Manual prospecting was time-consuming and inconsistent, limiting campaign scale and response quality.
-    </p>
-
+    <p>Sales teams required a scalable system to identify, enrich, and personalize outreach to high-value prospects. Manual prospecting was time-consuming and inconsistent, limiting campaign scale and response quality.</p>
     <h3>Solution</h3>
-    <p>
-      Designed an automated lead enrichment workflow using n8n integrated with Apollo and Clearbit APIs. Implemented AI-powered personalization using Claude 3 to generate context-aware outreach messages. Built structured sequencing logic for multi-touch campaigns with CRM integration and response tracking.
-    </p>
-
+    <p>Designed an automated lead enrichment workflow using n8n integrated with Apollo and Clearbit APIs. Implemented AI-powered personalization using Claude 3 to generate context-aware outreach messages. Built structured sequencing logic for multi-touch campaigns with CRM integration and response tracking.</p>
     <h3>Key Results</h3>
     <div class="modal-results">
-      <div class="mr-item">
-        <div class="mr-num">3x</div>
-        <div class="mr-lbl">Prospecting Speed</div>
-      </div>
-      <div class="mr-item">
-        <div class="mr-num">50%+</div>
-        <div class="mr-lbl">Response Rate Improvement</div>
-      </div>
-      <div class="mr-item">
-        <div class="mr-num">100%</div>
-        <div class="mr-lbl">Automated Enrichment</div>
-      </div>
+      <div class="mr-item"><div class="mr-num">3x</div><div class="mr-lbl">Prospecting Speed</div></div>
+      <div class="mr-item"><div class="mr-num">50%+</div><div class="mr-lbl">Response Rate Improvement</div></div>
+      <div class="mr-item"><div class="mr-num">100%</div><div class="mr-lbl">Automated Enrichment</div></div>
     </div>
-
     <h3>Tech Stack</h3>
-    <ul>
-      <li>n8n automation workflows</li>
-      <li>Apollo & Clearbit APIs</li>
-      <li>Claude 3 for AI personalization</li>
-      <li>CRM integration via webhooks</li>
-      <li>Sequenced multi-touch outreach logic</li>
-    </ul>
-
-    <div class="modal-cta">
-      <a href="mailto:hks.automations@gmail.com?subject=Interested in Lead Enrichment Pipeline" class="modal-cta-em">
-        ✉️ Send an Email
-      </a>
-    </div>
+    <ul><li>n8n automation workflows</li><li>Apollo & Clearbit APIs</li><li>Claude 3 for AI personalization</li><li>CRM integration via webhooks</li><li>Sequenced multi-touch outreach logic</li></ul>
+    <div class="modal-cta"><a href="mailto:hks.automations@gmail.com?subject=Interested in Lead Enrichment Pipeline" class="modal-cta-em">✉️ Send an Email</a></div>
   </div>
 </div>
 
-
-<!-- <div class="modal-bg" id="m4" onclick="bgClose(event,'m4')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m4')">✕</button><div class="modal-num">PROJECT 04</div><h2>AI Customer Support RAG System</h2><h3>Challenge</h3><p>Support teams spending the majority of their time answering the same repetitive questions, leading to slow response times, agent burnout, and customer frustration.</p><h3>Solution</h3><p>Built a RAG-based customer support system using Flowise and n8n that automatically answers questions from the company knowledge base. Includes confidence scoring — low-confidence answers are immediately escalated to human agents with full context.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">90%+</div><div class="mr-lbl">Answer Accuracy</div></div><div class="mr-item"><div class="mr-num">70%</div><div class="mr-lbl">Tickets Auto-Resolved</div></div><div class="mr-item"><div class="mr-num">Instant</div><div class="mr-lbl">Response Time</div></div></div><h3>Tech Stack</h3><ul><li>Flowise for RAG pipeline</li><li>n8n for orchestration and routing</li><li>Vector database for knowledge base storage</li><li>Confidence scoring for smart human handoff</li><li>OpenAI / Groq LLM integration</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20an%20AI%20Customer%20Support%20RAG%20system." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in AI Customer Support RAG System" class="modal-cta-em">✉️ Send an Email</a></div></div></div> -->
-    <div class="modal-bg" id="m4" onclick="bgClose(event,'m4')">
+<div class="modal-bg" id="m4" onclick="bgClose(event,'m4')">
   <div class="modal-box">
     <button class="modal-close-btn" onclick="closeM('m4')">✕</button>
-
     <div class="modal-num">PROJECT 04</div>
     <h2>AI Customer Support RAG System</h2>
-
     <h3>Challenge</h3>
-    <p>
-      Customer support teams required faster resolution times and accurate answers from large knowledge bases. Manual knowledge lookup resulted in inconsistent responses and delayed escalation handling.
-    </p>
-
+    <p>Customer support teams required faster resolution times and accurate answers from large knowledge bases. Manual knowledge lookup resulted in inconsistent responses and delayed escalation handling.</p>
     <h3>Solution</h3>
-    <p>
-      Developed a Retrieval-Augmented Generation (RAG) system using Flowise and n8n. Implemented vector-based search to retrieve relevant documentation before passing context to the LLM for grounded responses. Integrated automated escalation logic for low-confidence answers.
-    </p>
-
+    <p>Developed a Retrieval-Augmented Generation (RAG) system using Flowise and n8n. Implemented vector-based search to retrieve relevant documentation before passing context to the LLM for grounded responses. Integrated automated escalation logic for low-confidence answers.</p>
     <h3>Key Results</h3>
     <div class="modal-results">
-      <div class="mr-item">
-        <div class="mr-num">90%+</div>
-        <div class="mr-lbl">Response Accuracy</div>
-      </div>
-      <div class="mr-item">
-        <div class="mr-num">60%</div>
-        <div class="mr-lbl">Faster Resolution</div>
-      </div>
-      <div class="mr-item">
-        <div class="mr-num">24/7</div>
-        <div class="mr-lbl">Automated Availability</div>
-      </div>
+      <div class="mr-item"><div class="mr-num">90%+</div><div class="mr-lbl">Response Accuracy</div></div>
+      <div class="mr-item"><div class="mr-num">60%</div><div class="mr-lbl">Faster Resolution</div></div>
+      <div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Automated Availability</div></div>
     </div>
-
     <h3>Tech Stack</h3>
-    <ul>
-      <li>Flowise for RAG orchestration</li>
-      <li>Vector database (embedding storage)</li>
-      <li>n8n workflow automation</li>
-      <li>OpenAI API integration</li>
-      <li>Confidence scoring & escalation logic</li>
-    </ul>
-
-    <div class="modal-cta">
-      <a href="mailto:hks.automations@gmail.com?subject=Interested in AI Customer Support RAG System" class="modal-cta-em">
-        ✉️ Send an Email
-      </a>
-    </div>
+    <ul><li>Flowise for RAG orchestration</li><li>Vector database (embedding storage)</li><li>n8n workflow automation</li><li>OpenAI API integration</li><li>Confidence scoring & escalation logic</li></ul>
+    <div class="modal-cta"><a href="mailto:hks.automations@gmail.com?subject=Interested in AI Customer Support RAG System" class="modal-cta-em">✉️ Send an Email</a></div>
   </div>
 </div>
 
-
-<!-- <div class="modal-bg" id="m5" onclick="bgClose(event,'m5')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m5')">✕</button><div class="modal-num">PROJECT 05</div><h2>Autonomous AI Inbox Operations</h2><h3>Challenge</h3><p>A high-volume service team was losing 10+ hours a week per person to manual email triaging—identifying urgent requests, updating CRM records, and drafting basic follow-ups.</p><h3>Solution</h3><p>I architected an intelligent layer on top of the Gmail API using n8n and Groq LLMs. The system classifies intent and sentiment with 90%+ accuracy. Instead of just labeling, it triggers downstream actions: creating Notion tasks for urgent leads, updating HubSpot CRM, and drafting contextual replies in the user's Drafts folder for final review.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">80%</div><div class="mr-lbl">Inbox Time Saved</div></div><div class="mr-item"><div class="mr-num">Instant</div><div class="mr-lbl">CRM Synchronization</div></div><div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Automated Sorting</div></div></div><h3>Tech Stack</h3><ul><li>n8n for orchestration</li><li>Gmail API (OAuth2 Integration)</li><li>Groq LLM for intelligent classification</li><li>Priority scoring logic</li><li>Notion & HubSpot CRM Sync</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20the%20Gmail%20AI%20Organizer." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in Gmail AI Organizer" class="modal-cta-em">✉️ Send an Email</a></div></div></div> -->
-    <div class="modal-bg" id="m5" onclick="bgClose(event,'m5')">
+<div class="modal-bg" id="m5" onclick="bgClose(event,'m5')">
   <div class="modal-box">
     <button class="modal-close-btn" onclick="closeM('m5')">✕</button>
-
     <div class="modal-num">PROJECT 05</div>
     <h2>Autonomous AI Inbox Operations</h2>
-
     <h3>Challenge</h3>
-    <p>
-      High-volume email environments required automated categorization, prioritization, and structured handling. Manual inbox management reduced productivity and delayed high-priority responses.
-    </p>
-
+    <p>High-volume email environments required automated categorization, prioritization, and structured handling. Manual inbox management reduced productivity and delayed high-priority responses.</p>
     <h3>Solution</h3>
-    <p>
-      Designed an AI-driven email classification system using n8n and Gmail API. Integrated Groq LLM for rapid categorization and label assignment. Implemented rule-based routing and auto-response workflows for operational efficiency.
-    </p>
-
+    <p>Designed an AI-driven email classification system using n8n and Gmail API. Integrated Groq LLM for rapid categorization and label assignment. Implemented rule-based routing and auto-response workflows for operational efficiency.</p>
     <h3>Key Results</h3>
     <div class="modal-results">
-      <div class="mr-item">
-        <div class="mr-num">80%</div>
-        <div class="mr-lbl">Inbox Time Reduction</div>
-      </div>
-      <div class="mr-item">
-        <div class="mr-num">95%</div>
-        <div class="mr-lbl">Accurate Classification</div>
-      </div>
-      <div class="mr-item">
-        <div class="mr-num">100%</div>
-        <div class="mr-lbl">Automated Labeling</div>
-      </div>
+      <div class="mr-item"><div class="mr-num">80%</div><div class="mr-lbl">Inbox Time Reduction</div></div>
+      <div class="mr-item"><div class="mr-num">95%</div><div class="mr-lbl">Accurate Classification</div></div>
+      <div class="mr-item"><div class="mr-num">100%</div><div class="mr-lbl">Automated Labeling</div></div>
     </div>
-
     <h3>Tech Stack</h3>
-    <ul>
-      <li>n8n workflow automation</li>
-      <li>Gmail API integration</li>
-      <li>Groq LLM classification</li>
-      <li>Rule-based routing logic</li>
-      <li>Auto-reply workflows</li>
-    </ul>
-
-    <div class="modal-cta">
-      <a href="mailto:hks.automations@gmail.com?subject=Interested in AI Inbox Automation" class="modal-cta-em">
-        ✉️ Send an Email
-      </a>
-    </div>
+    <ul><li>n8n workflow automation</li><li>Gmail API integration</li><li>Groq LLM classification</li><li>Rule-based routing logic</li><li>Auto-reply workflows</li></ul>
+    <div class="modal-cta"><a href="mailto:hks.automations@gmail.com?subject=Interested in AI Inbox Automation" class="modal-cta-em">✉️ Send an Email</a></div>
   </div>
 </div>
 
-
-<!-- <div class="modal-bg" id="m6" onclick="bgClose(event,'m6')"><div class="modal-box"><button class="modal-close-btn" onclick="closeM('m6')">✕</button><div class="modal-num">PROJECT 06</div><h2>Appointment &amp; Follow-Up Automation</h2><h3>Challenge</h3><p>Service businesses losing revenue from missed follow-ups, high no-show rates due to lack of reminders, and staff time consumed by manual scheduling and confirmation calls.</p><h3>Solution</h3><p>Complete appointment lifecycle automation — from initial booking confirmation through WhatsApp reminders, rescheduling logic, post-appointment follow-ups, and review requests. Runs 24/7 without any human intervention.</p><h3>Key Results</h3><div class="modal-results"><div class="mr-item"><div class="mr-num">60%</div><div class="mr-lbl">Fewer No-Shows</div></div><div class="mr-item"><div class="mr-num">100%</div><div class="mr-lbl">Follow-Up Rate</div></div><div class="mr-item"><div class="mr-num">24/7</div><div class="mr-lbl">Booking Available</div></div></div><h3>Tech Stack</h3><ul><li>n8n for workflow orchestration</li><li>WhatsApp API for messaging</li><li>CRM integration for customer data</li><li>Calendar API for scheduling</li><li>Intelligent rescheduling and conflict resolution logic</li></ul><div class="modal-cta"><a href="https://wa.me/919925798962?text=Hi%20Harvish%2C%20I%20am%20interested%20in%20Appointment%20and%20Follow-Up%20Automation." target="_blank" class="modal-cta-wa">💬 Discuss on WhatsApp</a><a href="mailto:hks.automations@gmail.com?subject=Interested in Appointment Follow-Up Automation" class="modal-cta-em">✉️ Send an Email</a></div></div></div> -->
-    <div class="modal-bg" id="m6" onclick="bgClose(event,'m6')">
+<div class="modal-bg" id="m6" onclick="bgClose(event,'m6')">
   <div class="modal-box">
     <button class="modal-close-btn" onclick="closeM('m6')">✕</button>
-
     <div class="modal-num">PROJECT 06</div>
     <h2>Appointment & Follow-Up Automation</h2>
-
     <h3>Challenge</h3>
-    <p>
-      Businesses required structured appointment scheduling with automated reminders, rescheduling logic, and post-appointment follow-ups. Manual coordination led to missed appointments and inconsistent customer communication.
-    </p>
-
+    <p>Businesses required structured appointment scheduling with automated reminders, rescheduling logic, and post-appointment follow-ups. Manual coordination led to missed appointments and inconsistent customer communication.</p>
     <h3>Solution</h3>
-    <p>
-      Built an automated scheduling system using n8n integrated with WhatsApp API, CRM, and Calendar APIs. Implemented reminder workflows, rescheduling logic, and automated follow-up messaging based on appointment outcomes.
-    </p>
-
+    <p>Built an automated scheduling system using n8n integrated with WhatsApp API, CRM, and Calendar APIs. Implemented reminder workflows, rescheduling logic, and automated follow-up messaging based on appointment outcomes.</p>
     <h3>Key Results</h3>
     <div class="modal-results">
-      <div class="mr-item">
-        <div class="mr-num">40%</div>
-        <div class="mr-lbl">Reduction in No-Shows</div>
-      </div>
-      <div class="mr-item">
-        <div class="mr-num">100%</div>
-        <div class="mr-lbl">Automated Reminders</div>
-      </div>
-      <div class="mr-item">
-        <div class="mr-num">2x</div>
-        <div class="mr-lbl">Follow-Up Efficiency</div>
-      </div>
+      <div class="mr-item"><div class="mr-num">40%</div><div class="mr-lbl">Reduction in No-Shows</div></div>
+      <div class="mr-item"><div class="mr-num">100%</div><div class="mr-lbl">Automated Reminders</div></div>
+      <div class="mr-item"><div class="mr-num">2x</div><div class="mr-lbl">Follow-Up Efficiency</div></div>
     </div>
-
     <h3>Tech Stack</h3>
-    <ul>
-      <li>n8n automation workflows</li>
-      <li>WhatsApp Business API</li>
-      <li>CRM integration</li>
-      <li>Calendar API integration</li>
-      <li>Automated reminder & follow-up logic</li>
-    </ul>
-
-    <div class="modal-cta">
-      <a href="mailto:hks.automations@gmail.com?subject=Interested in Appointment Automation" class="modal-cta-em">
-        ✉️ Send an Email
-      </a>
-    </div>
+    <ul><li>n8n automation workflows</li><li>WhatsApp Business API</li><li>CRM integration</li><li>Calendar API integration</li><li>Automated reminder & follow-up logic</li></ul>
+    <div class="modal-cta"><a href="mailto:hks.automations@gmail.com?subject=Interested in Appointment Automation" class="modal-cta-em">✉️ Send an Email</a></div>
   </div>
 </div>
-
 
 <script>
 function openModal(id) {
