@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYS.02: Private RAG Infrastructure | HKS Automations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bs-purple: #712cf9; --bs-purple-hover: #6528e0; --bs-dark: #212529; --bs-gray-dark: #343a40;
+            --bs-gray: #6c757d; --bs-light: #f8f9fa; --bs-white: #ffffff; --bs-border: #dee2e6;
+            --bs-font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --bs-font-mono: "Fira Code", SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--bs-font-sans); background: var(--bs-light); color: var(--bs-dark); line-height: 1.6; }
+        h1, h2 { font-weight: 700; letter-spacing: -0.02em; color: var(--bs-dark); margin-bottom: 1rem; }
+        p { color: var(--bs-gray-dark); margin-bottom: 1.5rem; }
+        nav { background: rgba(255, 255, 255, 0.95); padding: 1rem 1.5rem; border-bottom: 1px solid var(--bs-border); display: flex; justify-content: space-between; position: sticky; top: 0; }
+        nav a { color: var(--bs-gray-dark); text-decoration: none; font-weight: 500; }
+        nav .brand { color: var(--bs-purple); font-weight: 700; font-size: 1.25rem; }
+        
+        .page-container { max-width: 900px; margin: 3rem auto; background: var(--bs-white); border: 1px solid var(--bs-border); border-radius: 0.5rem; box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05); }
+        .doc-header { padding: 3rem; border-bottom: 1px solid var(--bs-border); background-color: #fcfcfc; }
+        .sys-id { font-family: var(--bs-font-mono); color: var(--bs-purple); font-weight: 600; display: block; margin-bottom: 0.5rem; }
+        .doc-body { padding: 3rem; }
+        
+        .spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
+        .spec-box { background: var(--bs-light); border: 1px solid var(--bs-border); padding: 1.5rem; border-radius: 0.5rem; text-align: center; }
+        .spec-box span { display: block; font-size: 0.85rem; color: var(--bs-gray); text-transform: uppercase; font-weight: 600; margin-bottom: 0.5rem;}
+        .spec-box strong { font-size: 1.25rem; color: var(--bs-dark); }
+        .spec-box.highlight strong { color: var(--bs-purple); font-family: var(--bs-font-mono); font-size: 2rem; }
+
+        .section-title { font-size: 1.5rem; margin-top: 2.5rem; border-bottom: 1px solid var(--bs-border); padding-bottom: 0.5rem; }
+        ul.tech-list { list-style: none; margin-bottom: 2rem; }
+        ul.tech-list li { position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; }
+        ul.tech-list li::before { content: "→"; position: absolute; left: 0; color: var(--bs-purple); font-family: var(--bs-font-mono); font-weight: 600; }
+
+        .code-window { background: #212529; border-radius: 0.5rem; border: 1px solid #495057; margin: 2rem 0; overflow: hidden; }
+        .code-header { background: #343a40; padding: 0.75rem 1rem; border-bottom: 1px solid #495057; font-family: var(--bs-font-mono); font-size: 0.85rem; color: #adb5bd; }
+        .code-body-pre { padding: 1.5rem; margin: 0; font-family: var(--bs-font-mono); font-size: 0.9rem; color: #f8f9fa; overflow-x: auto; }
+        .syn-k { color: #9cdcfe; } .syn-s { color: #ce9178; } .syn-n { color: #b5cea8; } .syn-b { color: #569cd6; }
+
+        .btn-primary { display: block; padding: 1rem; text-align: center; background: var(--bs-purple); color: #fff; text-decoration: none; font-weight: 600; border-radius: 0.375rem; transition: 0.2s; }
+        .btn-primary:hover { background: var(--bs-purple-hover); }
+        @media (max-width: 768px) { .spec-grid { grid-template-columns: 1fr; } .doc-header, .doc-body { padding: 2rem 1.5rem; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="hks_portfolio_final.html" class="brand">HKS Automations</a>
+    <a href="hks_portfolio_final.html">← Back to Architectures</a>
+</nav>
+
+<div class="page-container">
+    <div class="doc-header">
+        <span class="sys-id">Architecture / hks/sys-02</span>
+        <h1 style="font-size: 2.5rem;">Private RAG Infrastructure</h1>
+        <p style="font-size: 1.15rem; margin-bottom: 0;">An enterprise-grade, data-isolated retrieval system. Ingests corporate documentation into localized vector spaces, providing highly accurate internal answers.</p>
+    </div>
+
+    <div class="doc-body">
+        <div class="spec-grid">
+            <div class="spec-box"><span>Investment</span><strong>$3.5k – $5.5k</strong></div>
+            <div class="spec-box"><span>Timeline</span><strong>7 - 14 Days</strong></div>
+            <div class="spec-box"><span>Core Stack</span><strong>Flowise + Pinecone</strong></div>
+        </div>
+
+        <h2 class="section-title">The Operational Bottleneck</h2>
+        <p>Enterprise support teams spend over 70% of their operational bandwidth repeatedly answering documented technical queries. However, passing sensitive engineering manuals or proprietary IP into public LLMs represents an unacceptable data security risk.</p>
+
+        <h2 class="section-title">The Architectural Solution</h2>
+        <p>A fully isolated Retrieval-Augmented Generation (RAG) system built with Flowise and Pinecone. It ingests your secure knowledge base into a localized vector database, intercepting support queries to provide highly accurate answers backed by internal citations.</p>
+
+        <h2 class="section-title">Execution Sequence</h2>
+        <ul class="tech-list">
+            <li><strong>Ingestion:</strong> Bulk processing of unstructured enterprise PDFs, manuals, and internal wikis.</li>
+            <li><strong>Vectorization:</strong> Automated document chunking and text-embedding generation via LangChain.</li>
+            <li><strong>Indexing:</strong> Secure ingestion into isolated Pinecone vector namespaces.</li>
+            <li><strong>Query Resolution:</strong> User queries execute semantic searches to retrieve exact contextual grounding.</li>
+            <li><strong>Synthesis & Handoff:</strong> LLM synthesizes the final answer. Queries falling below a strict confidence threshold trigger an automated human-agent escalation.</li>
+        </ul>
+
+        <h2 class="section-title">Core Logic Definition</h2>
+        <div class="code-window">
+            <div class="code-header">flowise_vector_store.json</div>
+            <pre class="code-body-pre"><code><span class="syn-k">"framework"</span>: <span class="syn-s">"Flowise AI"</span>,
+<span class="syn-k">"parameters"</span>: {
+  <span class="syn-k">"vectorStore"</span>: <span class="syn-s">"Pinecone Index"</span>,
+  <span class="syn-k">"embeddings"</span>: <span class="syn-s">"text-embedding-3-large"</span>,
+  <span class="syn-k">"topK_retrieval"</span>: <span class="syn-n">5</span>,
+  <span class="syn-k">"security"</span>: {
+    <span class="syn-k">"returnSourceDocuments"</span>: <span class="syn-b">true</span>,
+    <span class="syn-k">"human_escalation_threshold"</span>: <span class="syn-n">0.88</span>
+  }
+}</code></pre>
+        </div>
+
+        <h2 class="section-title">Expected Telemetry</h2>
+        <div class="spec-grid">
+            <div class="spec-box highlight"><strong>90%</strong><span>Answer Accuracy</span></div>
+            <div class="spec-box highlight"><strong>70%</strong><span>Auto-Resolution</span></div>
+            <div class="spec-box highlight"><strong>Zero</strong><span>Data Leakage</span></div>
+        </div>
+
+        <a href="mailto:contact@hksautomations.com?subject=Deploy: SYS-02" class="btn-primary">Initiate Deployment & Scoping</a>
+    </div>
+</div>
+</body>
+</html>
