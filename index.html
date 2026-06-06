@@ -85,20 +85,17 @@
         /* ─── NAV ─── */
         nav {
             position: sticky; top: 0; z-index: 1020;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--bs-border);
-            padding: 1rem 1.5rem;
+            background-color: #060913; /* Matches your logo background perfectly */
+            border-bottom: 1px solid #1e293b;
+            padding: 0.5rem 1.5rem;
             display: flex; align-items: center; justify-content: space-between;
         }
         .navbar-brand {
-            font-size: 1.25rem; font-weight: 600; color: var(--bs-purple);
-            display: flex; align-items: center; gap: 0.5rem; text-decoration: none;
+            display: flex; align-items: center; text-decoration: none;
         }
-        .navbar-brand svg { width: 28px; height: 28px; fill: currentColor; }
         .nav-links { display: flex; gap: 1.5rem; align-items: center; }
-        .nav-link { color: var(--bs-gray-dark); font-weight: 500; font-size: 0.95rem; }
-        .nav-link:hover { color: var(--bs-purple); text-decoration: none; }
+        .nav-link { color: #94a3b8; font-weight: 500; font-size: 0.95rem; }
+        .nav-link:hover { color: #ffffff; text-decoration: none; }
 
         /* ─── CONTAINERS ─── */
         .container {
@@ -195,12 +192,7 @@
 
 <nav>
     <a href="index.html" class="navbar-brand">
-        <!-- Bootstrap-style icon wrapper -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM3 3v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3H3z"/>
-            <path d="M5.5 5.5A.5.5 0 0 1 6 5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5zm0 2A.5.5 0 0 1 6 7h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5zm0 2A.5.5 0 0 1 6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
-        </svg>
-        HKS Automations
+        <img src="images/logo.png" alt="HKS Automations" style="max-height: 55px; width: auto; border-radius: 6px;">
     </a>
     <div class="nav-links">
         <a href="#architectures" class="nav-link">Architectures</a>
